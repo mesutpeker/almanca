@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almanca Öğrenme Quiz Uygulaması</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="container">
+            <header>
+                <div class="logo">
+                    <img src="german_flag.svg" alt="Almanca Bayrağı" class="flag-icon">
+                    <h1>Almanca Quiz</h1>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span id="question-counter">Soru: 0/0</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span id="score-display">Puan: 0</span>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div id="start-screen" class="screen active">
+                    <div class="start-content">
+                        <div class="title-animation">
+                            <h2>Almanca Öğrenme Quiz</h2>
+                            <div class="mascot">
+                                <img src="mascot.svg" alt="Maskot" class="mascot-img">
+                            </div>
+                        </div>
+                        <div class="info-box">
+                            <p>Bu quiz uygulaması "Meine Woche" ve "Das esse ich gern" ünitelerindeki kelime ve cümleleri içermektedir.</p>
+                            <div class="question-types">
+                                <h3>Dört farklı soru tipi:</h3>
+                                <div class="type-item">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <span>Almanca cümle - Türkçe çeviri</span>
+                                </div>
+                                <div class="type-item">
+                                    <i class="fas fa-language"></i>
+                                    <span>Türkçe cümle - Almanca çeviri</span>
+                                </div>
+                                <div class="type-item">
+                                    <i class="fas fa-comments"></i>
+                                    <span>Almanca soru - Almanca cevap</span>
+                                </div>
+                                <div class="type-item">
+                                    <i class="fas fa-spell-check"></i>
+                                    <span>Almanca kelimenin doğru yazılışı</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="start-button" class="btn pulse-animation">
+                            <i class="fas fa-play"></i> Başla
+                        </button>
+                    </div>
+                </div>
+
+                <div id="quiz-screen" class="screen">
+                    <div class="question-header">
+                        <div class="question-type" id="question-type"></div>
+                        <div class="question-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div class="question" id="question"></div>
+                    </div>
+                    <div class="options" id="options">
+                        <!-- Options will be added dynamically -->
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    <button id="next-button" class="btn" disabled>
+                        <i class="fas fa-arrow-right"></i> Sonraki Soru
+                    </button>
+                </div>
+
+                <div id="results-screen" class="screen">
+                    <h2>Quiz Tamamlandı!</h2>
+                    <div class="confetti-container" id="confetti-container"></div>
+                    <div class="results-info">
+                        <div class="result-item">
+                            <i class="fas fa-trophy"></i>
+                            <p>Toplam Puan: <span id="final-score">0</span></p>
+                        </div>
+                        <div class="result-item">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Doğru Cevaplar: <span id="correct-answers">0</span></p>
+                        </div>
+                        <div class="result-item">
+                            <i class="fas fa-times-circle"></i>
+                            <p>Yanlış Cevaplar: <span id="wrong-answers">0</span></p>
+                        </div>
+                    </div>
+                    <div class="achievement" id="achievement">
+                        <div class="achievement-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="achievement-text">Harika iş çıkardın!</div>
+                    </div>
+                    <button id="restart-button" class="btn">
+                        <i class="fas fa-redo"></i> Tekrar Başla
+                    </button>
+                </div>
+            </main>
+
+            <footer>
+                <p>Almanca Öğrenme Quiz Uygulaması &copy; 2025</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
