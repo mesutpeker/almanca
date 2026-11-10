@@ -1,127 +1,2822 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almanca Öğrenme Quiz Uygulaması</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Almanca 7. Sınıf Yazılıya Hazırlık | Deutschreise</title>
+  <style>
+    :root {
+      --primary: #5c2d91;
+      --primary-light: #7b42b7;
+      --primary-dark: #3e1c66;
+      --secondary: #009cb2;
+      --secondary-light: #26c6da;
+      --accent-yellow: #f5a623;
+      --accent-green: #27ae60;
+      --accent-red: #e74c3c;
+      --bg: #f7f8fc;
+      --card-bg: #ffffff;
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --border-color: #e2e8f0;
+      --radius: 16px;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 14px rgba(92, 45, 145, 0.08);
+      --shadow-lg: 0 10px 25px rgba(92, 45, 145, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 70px;
+      touch-action: manipulation;
+    }
+
+    /* Top Banner / Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 60%, var(--secondary) 100%);
+      color: white;
+      padding: 24px 20px 20px;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .badge-yellow { background: var(--accent-yellow); color: #222; }
+
+    .header-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .header-sub {
+      font-size: 13px;
+      opacity: 0.92;
+      font-weight: 500;
+    }
+
+    .audio-settings-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.18);
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      flex-wrap: wrap;
+    }
+
+    .audio-btn-pill {
+      background: white;
+      color: var(--primary);
+      border: none;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .audio-btn-pill:active {
+      transform: scale(0.96);
+    }
+
+    .speed-selector {
+      display: flex;
+      background: rgba(255,255,255,0.25);
+      border-radius: 8px;
+      padding: 2px;
+    }
+
+    .speed-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .speed-btn.active {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs-wrapper {
+      max-width: 1024px;
+      margin: 16px auto 0;
+      padding: 0 16px;
+    }
+
+    .nav-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: #e9ecf5;
+      padding: 5px;
+      border-radius: 16px;
+      gap: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-tabs {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 6px;
+      }
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .tab-btn .tab-icon {
+      font-size: 18px;
+    }
+
+    .tab-btn.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1024px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card System */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Sub Tabs for Vocabulary Center */
+    .sub-tabs-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      background: #f1f5f9;
+      padding: 6px;
+      border-radius: 12px;
+    }
+
+    .sub-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .sub-tab-btn.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .vocab-sub-pane {
+      display: none;
+    }
+
+    .vocab-sub-pane.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    /* Topic Overview Grid */
+    .topics-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .topic-box {
+      border-radius: 14px;
+      padding: 16px;
+      border-left: 5px solid;
+      background: #fafbff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .topic-a { border-color: #5c2d91; }
+    .topic-b { border-color: #009cb2; }
+    .topic-c { border-color: #f5a623; }
+
+    .topic-box h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topic-box ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: 13.5px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .topic-box li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .topic-box li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Speak Buttons */
+    .btn-speak {
+      background: #efe8fa;
+      color: var(--primary);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      margin-left: 6px;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+      vertical-align: middle;
+    }
+
+    .btn-speak:active {
+      transform: scale(0.9);
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-speak.slow {
+      background: #e0f7fa;
+      color: var(--secondary);
+      font-size: 11px;
+      font-weight: bold;
+      width: auto;
+      border-radius: 12px;
+      padding: 2px 8px;
+      height: 26px;
+    }
+
+    /* Grammar Rules Box */
+    .rule-box {
+      background: #fff8e6;
+      border: 1px solid #ffe082;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+
+    .rule-box strong {
+      color: #b78103;
+    }
+
+    /* Flashcards */
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .flashcard {
+      background: white;
+      border: 2px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flashcard:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .flashcard.flipped {
+      background: #fdf4ff;
+      border-color: var(--primary);
+    }
+
+    .flashcard-term {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .flashcard-phonetic {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .flashcard-mean {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2e7d32;
+    }
+
+    .flashcard-category {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* Anlam Tahmini Kartı */
+    .guess-card-box {
+      background: linear-gradient(135deg, #fdf4ff 0%, #f0fdf4 100%);
+      border: 2px solid #d8b4fe;
+      border-radius: 16px;
+      padding: 26px 20px;
+      text-align: center;
+      max-width: 500px;
+      margin: 16px auto;
+      box-shadow: var(--shadow-md);
+    }
+
+    .guess-card-term {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .guess-card-phonetic {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .guess-card-reveal {
+      background: white;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 14px;
+      border: 1px solid #cbd5e0;
+      display: none;
+    }
+
+    /* Virtual German Keyboard */
+    .special-chars-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .char-btn {
+      background: #edf2f7;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .char-btn:active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Exercises */
+    .exercise-item {
+      background: #fbfcfe;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .exercise-q {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exercise-input {
+      font-size: 16px;
+      padding: 10px 14px;
+      border: 2px solid #cbd5e0;
+      border-radius: 10px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .exercise-input:focus {
+      border-color: var(--primary);
+    }
+
+    .btn-action {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-action:active {
+      transform: scale(0.97);
+    }
+
+    .btn-secondary {
+      background: #edf2f7;
+      color: var(--text-main);
+    }
+
+    .feedback-msg {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .feedback-msg.correct {
+      background: #e8f5e9;
+      color: #2e7d32;
+      display: block;
+    }
+
+    .feedback-msg.wrong {
+      background: #ffebee;
+      color: #c62828;
+      display: block;
+    }
+
+    /* Sentence Builder (Satzbau) */
+    .word-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+      min-height: 48px;
+      padding: 8px;
+      background: #edf2f7;
+      border-radius: 10px;
+    }
+
+    .word-chip {
+      background: white;
+      border: 1px solid #cbd5e0;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
+    }
+
+    .word-chip:active {
+      transform: scale(0.92);
+    }
+
+    .word-chip.used {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .sentence-target {
+      min-height: 52px;
+      border: 2px dashed #a0aec0;
+      border-radius: 12px;
+      padding: 8px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      background: white;
+      margin-bottom: 12px;
+    }
+
+    /* Multiple Choice */
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .quiz-option {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--primary-light);
+      background: #fdfaff;
+    }
+
+    .quiz-option.selected-correct {
+      background: #e8f5e9 !important;
+      border-color: #2e7d32 !important;
+      color: #1b5e20;
+    }
+
+    .quiz-option.selected-wrong {
+      background: #ffebee !important;
+      border-color: #c62828 !important;
+      color: #b71c1c;
+    }
+
+    /* Exam Mode */
+    .exam-header {
+      background: #2d3748;
+      color: white;
+      padding: 16px 20px;
+      border-radius: 14px 14px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .exam-nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .exam-nav-btn {
+      background: #edf2f7;
+      color: #4a5568;
+      border: 2px solid #cbd5e0;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .exam-nav-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(92, 45, 145, 0.25);
+    }
+
+    .exam-body {
+      border: 2px solid #2d3748;
+      border-top: none;
+      border-radius: 0 0 14px 14px;
+      padding: 20px;
+      background: white;
+    }
+
+    .exam-section-title {
+      background: #edf2f7;
+      padding: 10px 14px;
+      border-left: 4px solid var(--primary);
+      font-size: 15px;
+      font-weight: 800;
+      margin: 20px 0 14px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .exam-section-title:first-child {
+      margin-top: 0;
+    }
+
+    .score-badge {
+      background: #ffd700;
+      color: #222;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    /* Exam Question Feedback Boxes */
+    .exam-q-box {
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      background: #fbfcfe;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+    }
+
+    .exam-q-box.q-correct {
+      border: 2px solid #27ae60 !important;
+      background: #f0fdf4 !important;
+    }
+
+    .exam-q-box.q-wrong {
+      border: 2px solid #e74c3c !important;
+      background: #fef2f2 !important;
+    }
+
+    .exam-q-feedback {
+      margin-top: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      display: none;
+    }
+
+    .exam-q-feedback.show-correct {
+      display: block;
+      background: #e8f5e9;
+      color: #1b5e20;
+      border-left: 4px solid #2e7d32;
+    }
+
+    .exam-q-feedback.show-wrong {
+      display: block;
+      background: #ffebee;
+      color: #b71c1c;
+      border-left: 4px solid #c62828;
+    }
+
+    .score-report-card {
+      background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 24px;
+      display: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .score-big {
+      font-size: 52px;
+      font-weight: 900;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    .mistake-list {
+      margin-top: 18px;
+      text-align: left;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #cbd5e0;
+    }
+
+    .mistake-item {
+      padding: 10px 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 13.5px;
+    }
+
+    .mistake-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Listening / Speech Recognition Box */
+    .speech-box {
+      background: #f0fdf4;
+      border: 2px dashed #86efac;
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .mic-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      color: white;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+      margin: 10px 0;
+      transition: transform 0.2s;
+    }
+
+    .mic-btn.recording {
+      animation: pulse 1s infinite;
+      background: #c0392b;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(231, 76, 60, 0.8); }
+      100% { transform: scale(1); }
+    }
+
+    /* Bottom Info Bar */
+    .source-credit {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 30px;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="app-container">
-        <div class="container">
-            <header>
-                <div class="logo">
-                    <img src="german_flag.svg" alt="Almanca Bayrağı" class="flag-icon">
-                    <h1>Almanca Quiz</h1>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" id="progress-bar"></div>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <i class="fas fa-question-circle"></i>
-                        <span id="question-counter">Soru: 0/0</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-star"></i>
-                        <span id="score-display">Puan: 0</span>
-                    </div>
-                </div>
-            </header>
 
-            <main>
-                <div id="start-screen" class="screen active">
-                    <div class="start-content">
-                        <div class="title-animation">
-                            <h2>Almanca Öğrenme Quiz</h2>
-                            <div class="mascot">
-                                <img src="mascot.svg" alt="Maskot" class="mascot-img">
-                            </div>
-                        </div>
-                        <div class="info-box">
-                            <p>Bu quiz uygulaması "Meine Woche" ve "Das esse ich gern" ünitelerindeki kelime ve cümleleri içermektedir.</p>
-                            <div class="question-types">
-                                <h3>Dört farklı soru tipi:</h3>
-                                <div class="type-item">
-                                    <i class="fas fa-exchange-alt"></i>
-                                    <span>Almanca cümle - Türkçe çeviri</span>
-                                </div>
-                                <div class="type-item">
-                                    <i class="fas fa-language"></i>
-                                    <span>Türkçe cümle - Almanca çeviri</span>
-                                </div>
-                                <div class="type-item">
-                                    <i class="fas fa-comments"></i>
-                                    <span>Almanca soru - Almanca cevap</span>
-                                </div>
-                                <div class="type-item">
-                                    <i class="fas fa-spell-check"></i>
-                                    <span>Almanca kelimenin doğru yazılışı</span>
-                                </div>
-                            </div>
-                        </div>
-                        <button id="start-button" class="btn pulse-animation">
-                            <i class="fas fa-play"></i> Başla
-                        </button>
-                    </div>
-                </div>
+  <!-- Top Sticky Header -->
+  <header>
+    <div class="header-content">
+      <div class="badge-bar">
+        <span class="badge badge-yellow">MEB 7. SINIF</span>
+        <span class="badge">DEUTSCHREISE: SICHER UNTERWEGS</span>
+        <span class="badge">LEKTION 1: DIE FREUNDSCHAFT</span>
+      </div>
 
-                <div id="quiz-screen" class="screen">
-                    <div class="question-header">
-                        <div class="question-type" id="question-type"></div>
-                        <div class="question-icon">
-                            <i class="fas fa-question-circle"></i>
-                        </div>
-                    </div>
-                    <div class="question-container">
-                        <div class="question" id="question"></div>
-                    </div>
-                    <div class="options" id="options">
-                        <!-- Options will be added dynamically -->
-                    </div>
-                    <div class="feedback" id="feedback"></div>
-                    <button id="next-button" class="btn" disabled>
-                        <i class="fas fa-arrow-right"></i> Sonraki Soru
-                    </button>
-                </div>
-
-                <div id="results-screen" class="screen">
-                    <h2>Quiz Tamamlandı!</h2>
-                    <div class="confetti-container" id="confetti-container"></div>
-                    <div class="results-info">
-                        <div class="result-item">
-                            <i class="fas fa-trophy"></i>
-                            <p>Toplam Puan: <span id="final-score">0</span></p>
-                        </div>
-                        <div class="result-item">
-                            <i class="fas fa-check-circle"></i>
-                            <p>Doğru Cevaplar: <span id="correct-answers">0</span></p>
-                        </div>
-                        <div class="result-item">
-                            <i class="fas fa-times-circle"></i>
-                            <p>Yanlış Cevaplar: <span id="wrong-answers">0</span></p>
-                        </div>
-                    </div>
-                    <div class="achievement" id="achievement">
-                        <div class="achievement-icon">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <div class="achievement-text">Harika iş çıkardın!</div>
-                    </div>
-                    <button id="restart-button" class="btn">
-                        <i class="fas fa-redo"></i> Tekrar Başla
-                    </button>
-                </div>
-            </main>
-
-            <footer>
-                <p>Almanca Öğrenme Quiz Uygulaması &copy; 2025</p>
-            </footer>
+      <div class="header-title-row">
+        <div>
+          <h1>Almanca Yazılıya Çalışma Uygulaması</h1>
+          <div class="header-sub">A. Meine beste Freundin/Mein bester Freund • B. Das Aussehen • C. Die Charaktereigenschaften</div>
         </div>
+      </div>
+
+      <!-- Audio & Speech Bar -->
+      <div class="audio-settings-bar">
+        <button class="audio-btn-pill" onclick="testAudio()" title="Almanca ses motorunu etkinleştir">
+          <span>🔊</span> <strong>Ses Motorunu Test Et</strong>
+        </button>
+
+        <span style="opacity: 0.8;">|</span>
+
+        <span>Okuma Hızı:</span>
+        <div class="speed-selector">
+          <button class="speed-btn active" id="spd-normal" onclick="setGlobalSpeed(1.0, this)">1.0x Normal</button>
+          <button class="speed-btn" id="spd-slow" onclick="setGlobalSpeed(0.75, this)">0.75x Yavaş</button>
+          <button class="speed-btn" id="spd-vslow" onclick="setGlobalSpeed(0.55, this)">0.5x Heceleme</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs (5 Main Tabs) -->
+  <div class="nav-tabs-wrapper">
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('tab-ozet', this)">
+        <span class="tab-icon">📖</span>
+        <span>Konu Özeti</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-kartlar', this)">
+        <span class="tab-icon">🗂️</span>
+        <span>Kelime Merkezi</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-telaffuz', this)">
+        <span class="tab-icon">🗣️</span>
+        <span>Telaffuz & Dinle</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-yazim', this)">
+        <span class="tab-icon">✍️</span>
+        <span>Yazım & Cümle</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-sinav', this)">
+        <span class="tab-icon">🏆</span>
+        <span>100 Puan Sınav</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: KONU ANLATIMI VE ÖZET              -->
+    <!-- ========================================== -->
+    <div id="tab-ozet" class="tab-content active">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📌 MEB Kitabı Konu Dökümü ve Kazanımlar</div>
+            <div class="card-subtitle">Deutschreise 7. Sınıf Lektion 1'deki tam konu kazanımları ve sosyal kalıplar</div>
+          </div>
+        </div>
+
+        <div class="topics-summary">
+          <!-- Konu A -->
+          <div class="topic-box topic-a">
+            <h3>
+              <span>A. En İyi Arkadaşım</span>
+              <button class="btn-speak" onclick="speak('Meine beste Freundin oder Mein bester Freund')">🔊</button>
+            </h3>
+            <p style="font-size: 13px; color: #555; margin-bottom: 8px;"><strong>(Meine beste Freundin / Mein bester Freund)</strong></p>
+            <ul>
+              <li><strong>Erkek arkadaş için:</strong> Mein bester Freund heißt Ege.</li>
+              <li><strong>Kız arkadaş için:</strong> Meine beste Freundin heißt Ezgi.</li>
+              <li><strong>İsim sorma:</strong> Wer ist dein bester Freund / deine beste Freundin?</li>
+              <li><strong>W-Fragen:</strong> Wer (Kim), Wie (Nasıl/Adı ne), Wo (Nerede), Woher (Nereden), Wie alt (Kaç yaşında).</li>
+              <li><strong>Yaş & Şehir:</strong> Er/Sie ist 13 Jahre alt. Er/Sie wohnt in Ankara.</li>
+            </ul>
+          </div>
+
+          <!-- Konu B -->
+          <div class="topic-box topic-b">
+            <h3>
+              <span>B. Dış Görünüş</span>
+              <button class="btn-speak" onclick="speak('Das Aussehen')">🔊</button>
+            </h3>
+            <p style="font-size: 13px; color: #555; margin-bottom: 8px;"><strong>(Das Aussehen: Haare, Augen, Größe)</strong></p>
+            <ul>
+              <li><strong>haben fiili (sahip olmak):</strong> Saç ve gözler için kullanılır.</li>
+              <li><em>"Er/Sie hat braune Augen und lange Haare."</em></li>
+              <li><strong>sein fiili (olmak):</strong> Boy ve kilo için kullanılır.</li>
+              <li><em>"Er/Sie ist groß / klein / schlank."</em></li>
+              <li><strong>Haare (Saçlar):</strong> kurz, lang, blond, braun, schwarz, rot, glatt, lockig.</li>
+              <li><strong>Augen (Gözler):</strong> braun, blau, grün, schwarz.</li>
+            </ul>
+          </div>
+
+          <!-- Konu C -->
+          <div class="topic-box topic-c">
+            <h3>
+              <span>C. Karakter Özellikleri</span>
+              <button class="btn-speak" onclick="speak('Die Charaktereigenschaften')">🔊</button>
+            </h3>
+            <p style="font-size: 13px; color: #555; margin-bottom: 8px;"><strong>(Die Charaktereigenschaften)</strong></p>
+            <ul>
+              <li><strong>sein fiili (ist):</strong> Karakter sıfatları 'sein' fiili ile bağlanır.</li>
+              <li><em>"Er/Sie ist nett und sportlich."</em></li>
+              <li><strong>Önemli sıfatlar:</strong> nett (kibar), sportlich (sportif), hilfsbereit (yardımsever), ehrlich (dürüst).</li>
+              <li><strong>Diğer sıfatlar:</strong> sympathisch (sempatik), lustig (komik), klug (akıllı), fleißig (çalışkan), faul (tembel), ruhig (sakin).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Yazılı İpuçları Kutusu -->
+        <div class="rule-box">
+          <h4 style="color: #b78103; margin-bottom: 6px;">💡 Yazılı Sınavında En Çok Puan Kazandıran 3 Kural:</h4>
+          <ol style="margin-left: 20px; line-height: 1.8;">
+            <li><strong>haben vs. sein Karıştırma!</strong> Göz ve saçtan bahsederken <code>hat</code> (Er hat blaue Augen), boy ve karakterden bahsederken <code>ist</code> (Er ist groß und nett) yazılır.</li>
+            <li><strong>Freund vs. Freundin:</strong> Erkek arkadaşın adı sorulursa <code>Mein bester Freund heißt...</code>, kız arkadaşın adı sorulursa <code>Meine beste Freundin heißt...</code> yazılır.</li>
+            <li><strong>Aussagen bejahen oder verneinen:</strong> Evet için <code>Ja, er ist...</code>, Hayır için <code>Nein, er ist nicht...</code> kalıbı kullanılır.</li>
+          </ol>
+        </div>
+
+        <!-- Fonksiyonel Cümleler Tablosu -->
+        <h3 style="margin: 20px 0 10px; font-size: 16px; color: var(--primary);">🗣️ Sosyal Kalıp İfadeler (Soziale Sprachausdrücke)</h3>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="background: #f1f5f9; text-align: left;">
+                <th style="padding: 10px; border-bottom: 2px solid #cbd5e0;">Almanca İfade</th>
+                <th style="padding: 10px; border-bottom: 2px solid #cbd5e0;">Türkçe Anlamı</th>
+                <th style="padding: 10px; border-bottom: 2px solid #cbd5e0; text-align: center;">Dinle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 10px; font-weight: 700;">Wer ist dein bester Freund?</td>
+                <td style="padding: 10px;">En iyi erkek arkadaşın kim?</td>
+                <td style="padding: 10px; text-align: center;"><button class="btn-speak" onclick="speak('Wer ist dein bester Freund?')">🔊</button></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 10px; font-weight: 700;">Wer ist deine beste Freundin?</td>
+                <td style="padding: 10px;">En iyi kız arkadaşın kim?</td>
+                <td style="padding: 10px; text-align: center;"><button class="btn-speak" onclick="speak('Wer ist deine beste Freundin?')">🔊</button></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 10px; font-weight: 700;">Mein bester Freund heißt Ege.</td>
+                <td style="padding: 10px;">En iyi erkek arkadaşımın adı Ege.</td>
+                <td style="padding: 10px; text-align: center;"><button class="btn-speak" onclick="speak('Mein bester Freund heißt Ege.')">🔊</button></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 10px; font-weight: 700;">Meine beste Freundin heißt Ezgi.</td>
+                <td style="padding: 10px;">En iyi kız arkadaşımın adı Ezgi.</td>
+                <td style="padding: 10px; text-align: center;"><button class="btn-speak" onclick="speak('Meine beste Freundin heißt Ezgi.')">🔊</button></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 10px; font-weight: 700;">Er/Sie hat braune Augen und lange Haare.</td>
+                <td style="padding: 10px;">Onun kahverengi gözleri ve uzun saçları var.</td>
+                <td style="padding: 10px; text-align: center;"><button class="btn-speak" onclick="speak('Er hat braune Augen und lange Haare.')">🔊</button></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 10px; font-weight: 700;">Er/Sie ist nett und sportlich.</td>
+                <td style="padding: 10px;">O kibar ve sportiftir.</td>
+                <td style="padding: 10px; text-align: center;"><button class="btn-speak" onclick="speak('Er ist nett und sportlich.')">🔊</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- ========================================== -->
+    <!-- TAB 2: KELİME ÇALIŞMA MERKEZİ             -->
+    <!-- (Kartlar, Anlam Tahmini, Test, Doğru Yazım) -->
+    <!-- ========================================== -->
+    <div id="tab-kartlar" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🗂️ Kelime Çalışma & Pratik Merkezi</div>
+            <div class="card-subtitle">Akıllı kartlar, anlam tahmini, kelime testi ve doğru yazım alıştırmaları</div>
+          </div>
+        </div>
+
+        <!-- Sub Tabs Bar -->
+        <div class="sub-tabs-bar">
+          <button class="sub-tab-btn active" onclick="switchVocabSubPane('vpane-cards', this)">🗂️ 1. Kelime Kartları</button>
+          <button class="sub-tab-btn" onclick="switchVocabSubPane('vpane-guess', this)">🎯 2. Anlam Tahmini</button>
+          <button class="sub-tab-btn" onclick="switchVocabSubPane('vpane-test', this)">📝 3. Kelime Testi</button>
+          <button class="sub-tab-btn" onclick="switchVocabSubPane('vpane-spelling', this)">✍️ 4. Doğru Yazım</button>
+        </div>
+
+        <!-- SUB PANE 1: FLASHCARDS -->
+        <div id="vpane-cards" class="vocab-sub-pane active">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="audio-btn-pill" onclick="filterCards('all')">Tümü</button>
+              <button class="audio-btn-pill" onclick="filterCards('aussehen')">Dış Görünüş (Aussehen)</button>
+              <button class="audio-btn-pill" onclick="filterCards('charakter')">Karakter (Charakter)</button>
+              <button class="audio-btn-pill" onclick="filterCards('fragen')">W-Soruları (Fragen)</button>
+            </div>
+            <button class="btn-action btn-secondary" onclick="resetFlashcards()">Tümünü Çevir</button>
+          </div>
+          <div class="flashcard-grid" id="flashcard-container">
+            <!-- Dynamic Flashcards -->
+          </div>
+        </div>
+
+        <!-- SUB PANE 2: ANLAM TAHMİNİ (BEDEUTUNG ERRATEN) -->
+        <div id="vpane-guess" class="vocab-sub-pane">
+          <div style="text-align: center; margin-bottom: 14px;">
+            <p style="font-size: 14px; color: var(--text-muted);">
+              Ekrana gelen Almanca kelimeyi oku ve anlamını zihninde tahmin et. Ardından "Anlamı Göster" butonuna basarak kontrol et!
+            </p>
+          </div>
+
+          <div class="guess-card-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span id="guess-category" class="badge" style="background: var(--primary);">Kategori</span>
+              <span id="guess-counter" style="font-size: 12px; font-weight: 800; color: var(--text-muted);">1 / 25</span>
+            </div>
+
+            <div id="guess-term" class="guess-card-term">die Haare</div>
+            <div id="guess-phonetic" class="guess-card-phonetic">/dii haare/</div>
+
+            <div style="margin-bottom: 16px;">
+              <button class="btn-action" style="background: white; color: var(--primary); border: 2px solid var(--primary);" onclick="speakCurrentGuessWord()">
+                <span>🔊</span> Telaffuzu Dinle
+              </button>
+            </div>
+
+            <button id="btn-show-guess" class="btn-action" onclick="revealGuessMeaning()">
+              💡 Anlamı Göster
+            </button>
+
+            <!-- Revealed Meaning -->
+            <div id="guess-revealed" class="guess-card-reveal">
+              <div id="guess-meaning" style="font-size: 18px; font-weight: 800; color: #166534; margin-bottom: 6px;">Saçlar</div>
+              <div id="guess-example" style="font-size: 14px; font-style: italic; color: #374151;">Er hat braune Haare.</div>
+              
+              <div style="display: flex; gap: 10px; justify-content: center; margin-top: 16px;">
+                <button class="btn-action" style="background: #27ae60;" onclick="handleGuessAnswer(true)">
+                  ✅ Doğru Tahmin Ettim (+1)
+                </button>
+                <button class="btn-action" style="background: #e74c3c;" onclick="handleGuessAnswer(false)">
+                  🔄 Tekrar Çalışmalıyım
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 14px; font-size: 14px; font-weight: 700;">
+            <span style="color: #27ae60;">Bildiğim: <strong id="guess-known-count">0</strong></span> &nbsp;|&nbsp; 
+            <span style="color: #e74c3c;">Tekrar Edilecek: <strong id="guess-repeat-count">0</strong></span>
+          </div>
+        </div>
+
+        <!-- SUB PANE 3: KELİME TESTİ (WORTSCHATZ-TEST) -->
+        <div id="vpane-test" class="vocab-sub-pane">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap;">
+            <span style="font-size: 14px; font-weight: 700; color: var(--primary);" id="vtest-progress">Soru 1 / 10</span>
+            <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);" id="vtest-score-badge">Puan: 0</span>
+          </div>
+
+          <div id="vocab-test-box" class="exercise-item">
+            <!-- Dynamic Vocab Quiz Question -->
+          </div>
+        </div>
+
+        <!-- SUB PANE 4: DOĞRU YAZIM & DİKTE (RECHTSCHREIBUNG) -->
+        <div id="vpane-spelling" class="vocab-sub-pane">
+          <div style="margin-bottom: 14px;">
+            <p style="font-size: 13.5px; color: var(--text-muted);">
+              Türkçe anlamı verilen veya ses butonundan dinlediğiniz Almanca kelimeyi doğru yazınız. (Almanca özel harfler için aşağıdaki tuşları kullanabilirsiniz):
+            </p>
+          </div>
+
+          <!-- Sanal Klavye Kısayolları -->
+          <div class="special-chars-bar">
+            <span style="font-size: 12px; font-weight: 700; color: var(--text-muted);">Almanca Harf Ekle:</span>
+            <button class="char-btn" onclick="insertChar('ä')">ä</button>
+            <button class="char-btn" onclick="insertChar('ö')">ö</button>
+            <button class="char-btn" onclick="insertChar('ü')">ü</button>
+            <button class="char-btn" onclick="insertChar('ß')">ß</button>
+            <button class="char-btn" onclick="insertChar('Ä')">Ä</button>
+            <button class="char-btn" onclick="insertChar('Ö')">Ö</button>
+            <button class="char-btn" onclick="insertChar('Ü')">Ü</button>
+          </div>
+
+          <div id="spelling-quiz-container">
+            <!-- Dynamic Spelling Questions -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: TELAFFUZ VE DİNLEME ÇALIŞMASI      -->
+    <!-- ========================================== -->
+    <div id="tab-telaffuz" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🗣️ Telaffuz & Konuşma Atölyesi</div>
+            <div class="card-subtitle">Almanca okuma kuralları, dinleme testleri ve mikrofona telaffuz pratiği</div>
+          </div>
+        </div>
+
+        <!-- Okuma Kuralları -->
+        <div style="background: #f8fafc; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+          <h3 style="color: var(--primary); font-size: 16px; margin-bottom: 10px;">🇹🇷 Türk Öğrenciler İçin Almanca Okuma Sırları</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; font-size: 13.5px;">
+            <div style="background: white; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong>ei = "ay"</strong> okunur.<br>
+              <em>Mein</em> (mayn), <em>heißt</em> (hayst)
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong>ie = uzun "ii"</strong> okunur.<br>
+              <em>Sie</em> (zii), <em>wie</em> (vii)
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong>sch = "ş"</strong> okunur.<br>
+              <em>schwarz</em> (şvarts), <em>Schule</em> (şule)
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong>sp / st = "şp / şt"</strong> okunur.<br>
+              <em>sportlich</em> (şportlih)
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong>eu = "oy"</strong> okunur.<br>
+              <em>Freund</em> (froynt), <em>Freundin</em>
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+              <strong>w = "v", v = "f"</strong> okunur.<br>
+              <em>wohnen</em> (voonen), <em>vier</em> (fiir)
+            </div>
+          </div>
+        </div>
+
+        <!-- Dinleme Testi (Hörverstehen) -->
+        <h3 style="font-size: 16px; color: var(--primary); margin-bottom: 12px;">🎧 Dinlediğin Cümleyi Seç (Hörverstehen)</h3>
+        <div id="listening-test-box">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Mikrofonla Konuşma Pratiği -->
+        <div class="speech-box">
+          <h3 style="font-size: 17px; color: #166534;">🎙️ Mikrofona Almanca Söyle (Sprechübung)</h3>
+          <p style="font-size: 13.5px; color: #374151; margin-top: 4px;">Aşağıdaki cümleyi yüksek sesle söyle, telaffuzunu anında değerlendirelim:</p>
+          
+          <div style="margin: 14px 0;">
+            <span id="target-speech-text" style="font-size: 18px; font-weight: 800; color: var(--primary);">Mein bester Freund heißt Ege.</span>
+            <button class="btn-speak" onclick="speak(document.getElementById('target-speech-text').innerText)">🔊</button>
+          </div>
+
+          <button id="mic-start-btn" class="mic-btn" onclick="toggleSpeechRecognition()">🎤</button>
+          <div id="mic-status" style="font-size: 13px; font-weight: 600; color: #4b5563;">Mikrofon butonuna tıkla ve konuş</div>
+          <div id="mic-result" style="margin-top: 10px; font-size: 14px; font-weight: 700;"></div>
+
+          <div style="margin-top: 12px;">
+            <button class="btn-action btn-secondary" onclick="nextSpeechPrompt()">Başka Cümleye Geç ➡️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: YAZIM VE CÜMLE KURMA ALIŞTIRMALARI  -->
+    <!-- ========================================== -->
+    <div id="tab-yazim" class="tab-content">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">✍️ Yazım & Cümle Kurma (Schreibübung)</div>
+            <div class="card-subtitle">iPad klavyesi için özel Almanca harf tuşları ve anında denetim</div>
+          </div>
+        </div>
+
+        <!-- Sanal Klavye Kısayolları -->
+        <div class="special-chars-bar">
+          <span style="font-size: 12px; font-weight: 700; color: var(--text-muted);">Almanca Harf Ekle:</span>
+          <button class="char-btn" onclick="insertChar('ä')">ä</button>
+          <button class="char-btn" onclick="insertChar('ö')">ö</button>
+          <button class="char-btn" onclick="insertChar('ü')">ü</button>
+          <button class="char-btn" onclick="insertChar('ß')">ß</button>
+          <button class="char-btn" onclick="insertChar('Ä')">Ä</button>
+          <button class="char-btn" onclick="insertChar('Ö')">Ö</button>
+          <button class="char-btn" onclick="insertChar('Ü')">Ü</button>
+        </div>
+
+        <!-- Aktivite 1: Fiil Tamamlama (sein / haben) -->
+        <h3 style="font-size: 16px; color: var(--primary); margin: 18px 0 10px;">1. Boşlukları Doğru Fiille Doldur (ist / hat / heißt / wohnt)</h3>
+        <div id="fill-verbs-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Aktivite 2: Cümle Sıralama (Satzbau) -->
+        <h3 style="font-size: 16px; color: var(--primary); margin: 24px 0 10px;">2. Cümle Sıralama (Satzbau)</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Kelimelere sırasıyla basarak doğru Almanca cümleyi oluştur:</p>
+        <div id="sentence-builder-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Aktivite 3: Harf Tamamlama (Buchstabensalat) -->
+        <h3 style="font-size: 16px; color: var(--primary); margin: 24px 0 10px;">3. Karışık Harflerden Doğru Sıfatı/Kelimeyi Yaz</h3>
+        <div id="scramble-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: 100 PUANLIK YAZILI SINAV SİMÜLATÖRÜ-->
+    <!-- (Şıklarda Türkçe Anlam Yok - Saf Almanca)  -->
+    <!-- ========================================== -->
+    <div id="tab-sinav" class="tab-content">
+      <div class="card" style="padding: 0; overflow: hidden; border: 2px solid #5c2d91;">
+        <div class="exam-header">
+          <div>
+            <div style="font-size: 18px; font-weight: 800;">T.C. MİLLÎ EĞİTİM BAKANLIĞI ORTAOKULU</div>
+            <div style="font-size: 13px; opacity: 0.85;">7. Sınıf Almanca Dersi 1. Dönem Yazılı Sınavı (Deutschreise: Sicher Unterwegs)</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="score-badge">HER BİRİ 100 PUAN</div>
+          </div>
+        </div>
+
+        <div class="exam-body">
+          <!-- 3 Farklı Yazılı Seçim Butonları -->
+          <div style="margin-bottom: 16px;">
+            <span style="font-size: 13px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 8px;">
+              📝 Yazılı Sınavı Seçiniz (3 Farklı Deneme Sınavı):
+            </span>
+            <div class="exam-nav-tabs">
+              <button class="exam-nav-btn active" id="btn-exam-0" onclick="switchExam(0)">
+                <span>📄</span> 1. Yazılı: Temel Konular & Arkadaş Tanıtma
+              </button>
+              <button class="exam-nav-btn" id="btn-exam-1" onclick="switchExam(1)">
+                <span>📄</span> 2. Yazılı: Dış Görünüş & Karakter Sıfatları
+              </button>
+              <button class="exam-nav-btn" id="btn-exam-2" onclick="switchExam(2)">
+                <span>📄</span> 3. Yazılı: Okuma Parçası & Beceri Temelli Sorular
+              </button>
+            </div>
+          </div>
+
+          <div id="exam-desc-banner" style="background: #eef2ff; border-left: 4px solid var(--primary); padding: 10px 14px; border-radius: 6px; font-size: 13.5px; margin-bottom: 20px;">
+            <!-- Dynamic Exam Title and Description -->
+          </div>
+
+          <!-- Exam Container where sections are rendered dynamically -->
+          <div id="active-exam-container">
+            <!-- Populated by JS for Exam 1, 2, or 3 -->
+          </div>
+
+          <!-- Sınavı Tamamla Butonu -->
+          <div style="text-align: center; margin-top: 30px;">
+            <button class="btn-action" style="padding: 14px 34px; font-size: 16px; background: #27ae60;" onclick="submitActiveExam()">
+              🏆 Sınavı Bitir ve Notumu Hesapla (Yanlışları Göster)
+            </button>
+          </div>
+
+          <!-- Karne & Puan Raporu -->
+          <div id="exam-report-card" class="score-report-card">
+            <h2>🎉 Sınav Sonuç Belgesi & Hata Analizi</h2>
+            <div class="score-big" id="final-score-val">0 / 100</div>
+            <div id="final-score-grade" style="font-size: 18px; font-weight: 700; color: #374151;">Not: -</div>
+            <p id="final-score-comment" style="font-size: 14px; margin-top: 8px; color: #4b5563;"></p>
+            
+            <!-- Yanlış Soruların Detaylı Açıklamaları Listesi -->
+            <div class="mistake-list" id="mistake-list-container">
+              <!-- Populated dynamically -->
+            </div>
+
+            <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <button class="btn-action" onclick="resetActiveExam()">🔄 Bu Sınavı Tekrar Çöz</button>
+              <button class="btn-action btn-secondary" onclick="nextExam()">➡️ Sonraki Yazılıya Geç</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Credit Footer -->
+    <div class="source-credit">
+      MEB Ortaokul 7. Sınıf Deutschreise: Sicher Unterwegs (Ders ve Çalışma Kitabı) Lektion 1 Müfredatına Birebir Uygun Hazırlanmıştır.
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- AUDIO & WEB SPEECH SYNTHESIS ---
+    let globalRate = 1.0;
+    let synth = window.speechSynthesis;
+    let germanVoice = null;
+
+    function initVoices() {
+      if (!synth) return;
+      let voices = synth.getVoices();
+      germanVoice = voices.find(v => v.lang.startsWith('de')) || null;
+    }
+
+    if (synth) {
+      synth.onvoiceschanged = initVoices;
+      initVoices();
+    }
+
+    function setGlobalSpeed(rate, btn) {
+      globalRate = rate;
+      document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function speak(text, customRate = null) {
+      if (!synth) {
+        alert("Tarayıcınızda seslendirme desteklenmiyor.");
+        return;
+      }
+      synth.cancel();
+      let utt = new SpeechSynthesisUtterance(text);
+      utt.lang = 'de-DE';
+      if (germanVoice) utt.voice = germanVoice;
+      utt.rate = customRate || globalRate;
+      utt.pitch = 1.0;
+      synth.speak(utt);
+    }
+
+    function testAudio() {
+      speak("Hallo! Willkommen zum Deutschlernen mit Ege und Ezgi.");
+    }
+
+    // --- SOUND EFFECTS (Web Audio API) ---
+    function playTone(freq, type, duration) {
+      try {
+        let ctx = new (window.AudioContext || window.webkitAudioContext)();
+        let osc = ctx.createOscillator();
+        let gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + duration);
+        osc.stop(ctx.currentTime + duration);
+      } catch(e) {}
+    }
+
+    function soundCorrect() {
+      playTone(523.25, 'sine', 0.15);
+      setTimeout(() => playTone(659.25, 'sine', 0.25), 100);
+    }
+
+    function soundWrong() {
+      playTone(200, 'sawtooth', 0.25);
+    }
+
+    // --- TAB SWITCHING ---
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      if (btn) btn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- SUB-TABS IN VOCABULARY CENTER ---
+    function switchVocabSubPane(paneId, btn) {
+      document.querySelectorAll('.vocab-sub-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(paneId).classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    // --- DATA REPOSITORY ---
+    const flashcardData = [
+      { de: "die Haare", tr: "Saçlar", phonetic: "dii haare", cat: "aussehen", ex: "Er hat braune Haare." },
+      { de: "die Augen", tr: "Gözler", phonetic: "dii augen", cat: "aussehen", ex: "Sie hat blaue Augen." },
+      { de: "lange Haare", tr: "Uzun saçlar", phonetic: "lange haare", cat: "aussehen", ex: "Ezgi hat lange Haare." },
+      { de: "kurze Haare", tr: "Kısa saçlar", phonetic: "kurtse haare", cat: "aussehen", ex: "Ege hat kurze Haare." },
+      { de: "blonde Haare", tr: "Sarı saçlar", phonetic: "blonde haare", cat: "aussehen", ex: "Sie hat blonde Haare." },
+      { de: "braune Augen", tr: "Kahverengi gözler", phonetic: "braune augen", cat: "aussehen", ex: "Er hat braune Augen." },
+      { de: "blaue Augen", tr: "Mavi gözler", phonetic: "blaue augen", cat: "aussehen", ex: "Sie hat blaue Augen." },
+      { de: "groß", tr: "Uzun boylu / büyük", phonetic: "groos", cat: "aussehen", ex: "Ege ist groß." },
+      { de: "klein", tr: "Kısa boylu / küçük", phonetic: "klayn", cat: "aussehen", ex: "Sie ist klein." },
+      { de: "schlank", tr: "Zayıf / İnce", phonetic: "şlank", cat: "aussehen", ex: "Er ist schlank." },
+      { de: "mittelgroß", tr: "Orta boylu", phonetic: "mittelgroos", cat: "aussehen", ex: "Ezgi ist mittelgroß." },
+      { de: "die Brille", tr: "Gözlük", phonetic: "dii brille", cat: "aussehen", ex: "Er hat eine Brille." },
+      { de: "nett", tr: "Kibar / Hoş", phonetic: "net", cat: "charakter", ex: "Er ist sehr nett." },
+      { de: "sportlich", tr: "Sportif", phonetic: "şportlih", cat: "charakter", ex: "Ege ist sportlich." },
+      { de: "hilfsbereit", tr: "Yardımsever", phonetic: "hilfsberayt", cat: "charakter", ex: "Ezgi ist hilfsbereit." },
+      { de: "ehrlich", tr: "Dürüst", phonetic: "eerlih", cat: "charakter", ex: "Ein Freund ist ehrlich." },
+      { de: "sympathisch", tr: "Sempatik", phonetic: "zümpatiş", cat: "charakter", ex: "Sie ist sympathisch." },
+      { de: "lustig", tr: "Komik / Neşeli", phonetic: "lustih", cat: "charakter", ex: "Er ist sehr lustig." },
+      { de: "klug", tr: "Akıllı / Zeki", phonetic: "kluuk", cat: "charakter", ex: "Ezgi ist sehr klug." },
+      { de: "fleißig", tr: "Çalışkan", phonetic: "flaysih", cat: "charakter", ex: "Sie ist fleißig." },
+      { de: "faul", tr: "Tembel", phonetic: "faul", cat: "charakter", ex: "Er ist nicht faul." },
+      { de: "ruhig", tr: "Sakin", phonetic: "ruuih", cat: "charakter", ex: "Er ist ruhig." },
+      { de: "freundlich", tr: "Arkadaş canlısı", phonetic: "froyntlih", cat: "charakter", ex: "Sie ist freundlich." },
+      { de: "Wer?", tr: "Kim?", phonetic: "ver", cat: "fragen", ex: "Wer ist dein bester Freund?" },
+      { de: "Wie?", tr: "Nasıl? / Adın ne?", phonetic: "vii", cat: "fragen", ex: "Wie heißt sie?" },
+      { de: "Wo?", tr: "Nerede?", phonetic: "vo", cat: "fragen", ex: "Wo wohnt Ege?" },
+      { de: "Wie alt?", tr: "Kaç yaşında?", phonetic: "vii alt", cat: "fragen", ex: "Wie alt bist du?" },
+      { de: "Woher?", tr: "Nereden?", phonetic: "voher", cat: "fragen", ex: "Woher kommst du?" }
+    ];
+
+    // --- PANE 1: FLASHCARDS ---
+    function renderFlashcards(filter = 'all') {
+      const cont = document.getElementById('flashcard-container');
+      cont.innerHTML = '';
+      flashcardData.forEach((item, idx) => {
+        if (filter !== 'all' && item.cat !== filter) return;
+        const card = document.createElement('div');
+        card.className = 'flashcard';
+        card.id = `fc-${idx}`;
+        card.innerHTML = `
+          <span class="flashcard-category">${item.cat}</span>
+          <div class="flashcard-term">${item.de}</div>
+          <div class="flashcard-phonetic">/${item.phonetic}/</div>
+          <div class="flashcard-mean" style="display:none;">${item.tr}</div>
+          <div style="margin-top: 8px;">
+            <button class="btn-speak" onclick="event.stopPropagation(); speak('${item.de}')">🔊</button>
+            <button class="btn-speak slow" onclick="event.stopPropagation(); speak('${item.de}', 0.55)">Yavaş</button>
+          </div>
+        `;
+        card.onclick = () => {
+          let mean = card.querySelector('.flashcard-mean');
+          if (mean.style.display === 'none') {
+            mean.style.display = 'block';
+            card.classList.add('flipped');
+          } else {
+            mean.style.display = 'none';
+            card.classList.remove('flipped');
+          }
+        };
+        cont.appendChild(card);
+      });
+    }
+
+    function filterCards(cat) { renderFlashcards(cat); }
+    function resetFlashcards() {
+      document.querySelectorAll('.flashcard').forEach(fc => {
+        let mean = fc.querySelector('.flashcard-mean');
+        if (mean.style.display === 'none') {
+          mean.style.display = 'block';
+          fc.classList.add('flipped');
+        } else {
+          mean.style.display = 'none';
+          fc.classList.remove('flipped');
+        }
+      });
+    }
+
+    // --- PANE 2: ANLAM TAHMİNİ (BEDEUTUNG ERRATEN) ---
+    let guessList = [...flashcardData].sort(() => 0.5 - Math.random());
+    let currentGuessIndex = 0;
+    let knownCount = 0;
+    let repeatCount = 0;
+
+    function renderCurrentGuessCard() {
+      if (currentGuessIndex >= guessList.length) {
+        document.querySelector('.guess-card-box').innerHTML = `
+          <h3 style="color: #166534; margin-bottom: 10px;">🎉 Harika! Tüm kelimeleri tamamladınız!</h3>
+          <p>Bildiğiniz: ${knownCount} | Tekrar edilecek: ${repeatCount}</p>
+          <button class="btn-action" style="margin-top: 14px;" onclick="resetGuessMode()">Yeniden Başlat</button>
+        `;
+        return;
+      }
+      const item = guessList[currentGuessIndex];
+      document.getElementById('guess-category').innerText = item.cat.toUpperCase();
+      document.getElementById('guess-counter').innerText = `${currentGuessIndex + 1} / ${guessList.length}`;
+      document.getElementById('guess-term').innerText = item.de;
+      document.getElementById('guess-phonetic').innerText = `/${item.phonetic}/`;
+      document.getElementById('guess-meaning').innerText = item.tr;
+      document.getElementById('guess-example').innerText = `Örnek: ${item.ex}`;
+
+      document.getElementById('guess-revealed').style.display = 'none';
+      document.getElementById('btn-show-guess').style.display = 'inline-flex';
+    }
+
+    function speakCurrentGuessWord() {
+      const item = guessList[currentGuessIndex];
+      if (item) speak(item.de);
+    }
+
+    function revealGuessMeaning() {
+      document.getElementById('guess-revealed').style.display = 'block';
+      document.getElementById('btn-show-guess').style.display = 'none';
+    }
+
+    function handleGuessAnswer(isKnown) {
+      if (isKnown) {
+        knownCount++;
+        document.getElementById('guess-known-count').innerText = knownCount;
+        soundCorrect();
+      } else {
+        repeatCount++;
+        document.getElementById('guess-repeat-count').innerText = repeatCount;
+        soundWrong();
+      }
+      currentGuessIndex++;
+      renderCurrentGuessCard();
+    }
+
+    function resetGuessMode() {
+      guessList = [...flashcardData].sort(() => 0.5 - Math.random());
+      currentGuessIndex = 0;
+      knownCount = 0;
+      repeatCount = 0;
+      document.getElementById('guess-known-count').innerText = 0;
+      document.getElementById('guess-repeat-count').innerText = 0;
+      renderCurrentGuessCard();
+    }
+
+    // --- PANE 3: KELİME TESTİ (WORTSCHATZ-TEST) ---
+    const vocabTestPool = [
+      { q: "„hilfsbereit“ kelimesinin Türkçe anlamı nedir?", opts: ["Kibar", "Yardımsever", "Dürüst", "Tembel"], correct: 1 },
+      { q: "„lange Haare“ ifadesinin Türkçe karşılığı nedir?", opts: ["Kısa saç", "Sarı saç", "Uzun saç", "Mavi göz"], correct: 2 },
+      { q: "„ehrlich“ kelimesinin Türkçe anlamı nedir?", opts: ["Dürüst", "Sportif", "Sakin", "Çalışkan"], correct: 0 },
+      { q: "„fleißig“ kelimesinin Türkçe anlamı nedir?", opts: ["Tembel", "Çalışkan", "Neşeli", "Akıllı"], correct: 1 },
+      { q: "„braune Augen“ ifadesi ne anlama gelir?", opts: ["Yeşil göz", "Kahverengi göz", "Siyah göz", "Mavi göz"], correct: 1 },
+      { q: "„nett“ kelimesinin anlamı hangisidir?", opts: ["Kibar / Hoş", "Kaba", "Uzun", "Kısa"], correct: 0 },
+      { q: "„Wer?“ W-sorusunun Türkçe karşılığı nedir?", opts: ["Nerede?", "Nasıl?", "Kim?", "Kaç yaşında?"], correct: 2 },
+      { q: "„schlank“ kelimesinin anlamı hangisidir?", opts: ["Zayıf / İnce", "Şişman", "Uzun boylu", "Kısa boylu"], correct: 0 },
+      { q: "„lustig“ kelimesinin Türkçe anlamı nedir?", opts: ["Sakin", "Eğlenceli / Komik", "Dürüst", "Yardımsever"], correct: 1 },
+      { q: "„Wie alt?“ sorusu neyi sorar?", opts: ["Nerede oturduğunu", "Adını", "Yaşını", "Boyunu"], correct: 2 }
+    ];
+
+    let currentVocabTestIdx = 0;
+    let vocabTestScore = 0;
+
+    function renderVocabTest() {
+      const box = document.getElementById('vocab-test-box');
+      if (currentVocabTestIdx >= vocabTestPool.length) {
+        box.innerHTML = `
+          <div style="text-align: center; padding: 20px;">
+            <h3 style="color: var(--primary);">🎉 Kelime Testini Tamamladınız!</h3>
+            <div style="font-size: 32px; font-weight: 900; color: #27ae60; margin: 10px 0;">
+              ${vocabTestScore} / ${vocabTestPool.length * 10} Puan
+            </div>
+            <button class="btn-action" onclick="resetVocabTest()">Testi Yeniden Başlat</button>
+          </div>
+        `;
+        return;
+      }
+      const q = vocabTestPool[currentVocabTestIdx];
+      document.getElementById('vtest-progress').innerText = `Soru ${currentVocabTestIdx + 1} / ${vocabTestPool.length}`;
+      document.getElementById('vtest-score-badge').innerText = `Puan: ${vocabTestScore}`;
+
+      let optsHtml = q.opts.map((opt, i) => `
+        <div class="quiz-option" id="vtest-opt-${i}" onclick="checkVocabTestAnswer(${i})">
+          <span>${String.fromCharCode(65 + i)}) ${opt}</span>
+        </div>
+      `).join('');
+
+      box.innerHTML = `
+        <div style="font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 12px;">
+          ${q.q}
+        </div>
+        <div class="quiz-options">${optsHtml}</div>
+        <div id="vtest-feedback" class="feedback-msg"></div>
+      `;
+    }
+
+    function checkVocabTestAnswer(selectedIdx) {
+      const q = vocabTestPool[currentVocabTestIdx];
+      const optEl = document.getElementById(`vtest-opt-${selectedIdx}`);
+      const fb = document.getElementById('vtest-feedback');
+
+      if (selectedIdx === q.correct) {
+        optEl.classList.add('selected-correct');
+        vocabTestScore += 10;
+        fb.className = 'feedback-msg correct';
+        fb.innerHTML = '✅ Harika! Doğru cevap (+10 Puan)';
+        soundCorrect();
+      } else {
+        optEl.classList.add('selected-wrong');
+        fb.className = 'feedback-msg wrong';
+        fb.innerHTML = `❌ Yanlış. Doğru cevap: <strong>${q.opts[q.correct]}</strong>`;
+        soundWrong();
+      }
+
+      document.querySelectorAll('#vocab-test-box .quiz-option').forEach(el => el.style.pointerEvents = 'none');
+      setTimeout(() => {
+        currentVocabTestIdx++;
+        renderVocabTest();
+      }, 1300);
+    }
+
+    function resetVocabTest() {
+      currentVocabTestIdx = 0;
+      vocabTestScore = 0;
+      renderVocabTest();
+    }
+
+    // --- PANE 4: DOĞRU YAZIM & DİKTE (RECHTSCHREIBUNG) ---
+    const spellingItems = [
+      { prompt: "Kibar / Hoş", correct: "nett", tip: "4 harfli, çift 't' ile biter" },
+      { prompt: "Sportif", correct: "sportlich", tip: "sp- ile başlar, -ch ile biter" },
+      { prompt: "Yardımsever", correct: "hilfsbereit", tip: "hilfs + bereit" },
+      { prompt: "Dürüst", correct: "ehrlich", tip: "ehr + lich" },
+      { prompt: "Saçlar", correct: "haare", tip: "çift 'a' ile yazılır: haare" },
+      { prompt: "Gözler", correct: "augen", tip: "au- ile başlar" }
+    ];
+
+    function renderSpellingQuiz() {
+      const cont = document.getElementById('spelling-quiz-container');
+      cont.innerHTML = '';
+      spellingItems.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'exercise-item';
+        div.innerHTML = `
+          <div class="exercise-q">
+            <span>${idx + 1}. Almancasını yazınız: <strong>„${item.prompt}“</strong></span>
+            <button class="btn-speak" onclick="speak('${item.correct}')" title="Dinle">🔊</button>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center; margin-top: 6px;">
+            <input type="text" id="spell-input-${idx}" class="exercise-input" style="max-width: 250px;" placeholder="Almanca kelimeyi yazın...">
+            <button class="btn-action" onclick="checkSpellingItem(${idx})">Kontrol Et</button>
+          </div>
+          <div id="spell-fb-${idx}" class="feedback-msg"></div>
+        `;
+        cont.appendChild(div);
+      });
+    }
+
+    function checkSpellingItem(idx) {
+      const input = document.getElementById(`spell-input-${idx}`);
+      const fb = document.getElementById(`spell-fb-${idx}`);
+      const item = spellingItems[idx];
+      let val = input.value.trim().toLowerCase();
+
+      if (val === item.correct.toLowerCase()) {
+        fb.className = 'feedback-msg correct';
+        fb.innerHTML = `✅ Harika! Doğru yazım: <strong>${item.correct}</strong>`;
+        soundCorrect();
+      } else {
+        fb.className = 'feedback-msg wrong';
+        fb.innerHTML = `❌ Hatalı yazım. İpucu: ${item.tip}. Doğrusu: <strong>${item.correct}</strong>`;
+        soundWrong();
+      }
+    }
+
+    // --- LISTENING TEST (HÖRVERSTEHEN) ---
+    const listeningQuestions = [
+      { audio: "Mein bester Freund heißt Ege.", options: ["Mein bester Freund heißt Ege.", "Meine beste Freundin heißt Ezgi.", "Er ist nett und sportlich."], correct: 0 },
+      { audio: "Sie hat lange braune Haare.", options: ["Er hat kurze blonde Haare.", "Sie hat lange braune Haare.", "Sie hat blaue Augen."], correct: 1 },
+      { audio: "Er ist sehr hilfsbereit und ehrlich.", options: ["Er ist faul und unhöflich.", "Er ist sehr hilfsbereit und ehrlich.", "Er hat eine Brille."], correct: 1 },
+      { audio: "Wer ist deine beste Freundin?", options: ["Wer ist dein bester Freund?", "Wer ist deine beste Freundin?", "Wie alt ist Ezgi?"], correct: 1 }
+    ];
+
+    let currentListeningIdx = 0;
+    function renderListeningQuestion() {
+      const box = document.getElementById('listening-test-box');
+      if (currentListeningIdx >= listeningQuestions.length) {
+        box.innerHTML = `
+          <div style="text-align: center; padding: 20px; background: #ecfdf5; border-radius: 12px;">
+            <h4>🎉 Tebrikler! Tüm dinleme testlerini tamamladınız!</h4>
+            <button class="btn-action" style="margin-top: 10px;" onclick="currentListeningIdx = 0; renderListeningQuestion();">Baştan Başla</button>
+          </div>
+        `;
+        return;
+      }
+      const q = listeningQuestions[currentListeningIdx];
+      let optionsHtml = q.options.map((opt, i) => `
+        <div class="quiz-option" id="listen-opt-${i}" onclick="checkListeningAnswer(${i})">
+          <span>${String.fromCharCode(65 + i)}) ${opt}</span>
+        </div>
+      `).join('');
+
+      box.innerHTML = `
+        <div class="exercise-item">
+          <div class="exercise-q">
+            <span>Soru ${currentListeningIdx + 1} / ${listeningQuestions.length}: Cümleyi dinle ve doğru şıkkı bul!</span>
+            <div>
+              <button class="btn-action" onclick="speak('${q.audio}')">🔊 Cümleyi Dinle</button>
+              <button class="btn-action btn-secondary" onclick="speak('${q.audio}', 0.6)">🐢 Yavaş Dinle</button>
+            </div>
+          </div>
+          <div class="quiz-options">${optionsHtml}</div>
+          <div id="listen-feedback" class="feedback-msg"></div>
+        </div>
+      `;
+    }
+
+    function checkListeningAnswer(idx) {
+      const q = listeningQuestions[currentListeningIdx];
+      const optEl = document.getElementById(`listen-opt-${idx}`);
+      const fb = document.getElementById('listen-feedback');
+      if (idx === q.correct) {
+        optEl.classList.add('selected-correct');
+        fb.className = 'feedback-msg correct';
+        fb.innerHTML = '✅ Doğru cevap! Harika dinleme! 👏';
+        soundCorrect();
+        setTimeout(() => {
+          currentListeningIdx++;
+          renderListeningQuestion();
+        }, 1200);
+      } else {
+        optEl.classList.add('selected-wrong');
+        fb.className = 'feedback-msg wrong';
+        fb.innerHTML = '❌ Yanlış şık. Tekrar dinleyip deneyin!';
+        soundWrong();
+      }
+    }
+
+    // --- SPEECH RECOGNITION (SPRECHÜBUNG) ---
+    const speechPrompts = [
+      "Mein bester Freund heißt Ege.",
+      "Meine beste Freundin heißt Ezgi.",
+      "Er hat braune Augen und lange Haare.",
+      "Er ist nett und sportlich.",
+      "Wer ist deine beste Freundin?",
+      "Sie ist sehr hilfsbereit."
+    ];
+    let currentSpeechIdx = 0;
+    let recognition = null;
+    let isRecording = false;
+
+    function initSpeechRecognition() {
+      window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!window.SpeechRecognition) {
+        document.getElementById('mic-status').innerText = "Tarayıcınız mikrofonla konuşma tanımayı desteklemiyor. Dinle ve sesli tekrar et!";
+        return;
+      }
+      recognition = new window.SpeechRecognition();
+      recognition.lang = 'de-DE';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onstart = () => {
+        isRecording = true;
+        document.getElementById('mic-start-btn').classList.add('recording');
+        document.getElementById('mic-status').innerText = "Dinleniyor... Lütfen cümleyi Almanca söyleyin...";
+      };
+
+      recognition.onresult = (e) => {
+        let transcript = e.results[0][0].transcript;
+        handleSpeechResult(transcript);
+      };
+
+      recognition.onerror = (e) => {
+        document.getElementById('mic-status').innerText = "Ses algılanamadı (" + e.error + "). Tekrar deneyin.";
+        stopSpeech();
+      };
+
+      recognition.onend = () => { stopSpeech(); };
+    }
+
+    function toggleSpeechRecognition() {
+      if (!recognition) initSpeechRecognition();
+      if (!recognition) return;
+      if (isRecording) { recognition.stop(); } else { recognition.start(); }
+    }
+
+    function stopSpeech() {
+      isRecording = false;
+      document.getElementById('mic-start-btn').classList.remove('recording');
+    }
+
+    function cleanStr(s) {
+      if (!s) return "";
+      return s.toLowerCase().replace(/[\.\,\?\!\-]/g, '').trim();
+    }
+
+    function handleSpeechResult(said) {
+      let target = speechPrompts[currentSpeechIdx];
+      let cleanTarget = cleanStr(target);
+      let cleanSaid = cleanStr(said);
+      let resDiv = document.getElementById('mic-result');
+
+      if (cleanSaid.includes(cleanTarget) || cleanTarget.includes(cleanSaid)) {
+        resDiv.innerHTML = `<span style="color:#2e7d32;">👏 Mükemmel Telaffuz! Söylediğiniz: "${said}"</span>`;
+        soundCorrect();
+      } else {
+        resDiv.innerHTML = `<span style="color:#d97706;">Söylediğiniz: "${said}"<br>Hedef: "${target}". Bir kez daha deneyin!</span>`;
+      }
+    }
+
+    function nextSpeechPrompt() {
+      currentSpeechIdx = (currentSpeechIdx + 1) % speechPrompts.length;
+      document.getElementById('target-speech-text').innerText = speechPrompts[currentSpeechIdx];
+      document.getElementById('mic-result').innerHTML = '';
+      document.getElementById('mic-status').innerText = 'Mikrofon butonuna tıkla ve konuş';
+    }
+
+    // --- ACTIVITY 1: FILL VERBS (SCHREIBÜBUNG) ---
+    const verbFillData = [
+      { pre: "Mein bester Freund ", answer: "heißt", post: " Ege. (heißt / ist / hat)", tip: "İsim belirtirken 'heißt' kullanılır." },
+      { pre: "Er ", answer: "hat", post: " braune Augen und kurze Haare. (ist / hat)", tip: "Göz ve saç için 'hat' (haben) kullanılır." },
+      { pre: "Ezgi ", answer: "ist", post: " nett und sportlich. (ist / hat)", tip: "Karakter özelliği için 'ist' (sein) kullanılır." },
+      { pre: "Meine beste Freundin ", answer: "wohnt", post: " in Ankara. (wohnt / ist)", tip: "Şehirde ikamet için 'wohnt' (wohnen) kullanılır." },
+      { pre: "Er ", answer: "ist", post: " groß und schlank. (ist / hat)", tip: "Boy ve kilo için 'ist' (sein) kullanılır." }
+    ];
+
+    function renderVerbFill() {
+      const cont = document.getElementById('fill-verbs-container');
+      cont.innerHTML = '';
+      verbFillData.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'exercise-item';
+        div.innerHTML = `
+          <div class="exercise-q">Cümle ${idx + 1}: Boşluğa uygun fiili yazınız</div>
+          <div style="font-size: 16px; margin-bottom: 8px;">
+            ${item.pre}
+            <input type="text" id="verb-input-${idx}" style="width: 110px; display: inline-block; padding: 6px 10px; font-weight: bold;" class="exercise-input" placeholder="...">
+            ${item.post}
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn-action" onclick="checkVerbFill(${idx})">Kontrol Et</button>
+            <button class="btn-action btn-secondary" onclick="speak('${item.pre}' + '${item.answer}' + '${item.post.split('(')[0]}')">🔊 Cümleyi Dinle</button>
+          </div>
+          <div id="verb-fb-${idx}" class="feedback-msg"></div>
+        `;
+        cont.appendChild(div);
+      });
+    }
+
+    function checkVerbFill(idx) {
+      const input = document.getElementById(`verb-input-${idx}`);
+      const fb = document.getElementById(`verb-fb-${idx}`);
+      const item = verbFillData[idx];
+      let val = input.value.trim().toLowerCase();
+
+      if (val === item.answer.toLowerCase()) {
+        fb.className = 'feedback-msg correct';
+        fb.innerHTML = `✅ Tebrikler! Doğru: <strong>${item.answer}</strong>`;
+        soundCorrect();
+      } else {
+        fb.className = 'feedback-msg wrong';
+        fb.innerHTML = `❌ Yanlış. İpucu: ${item.tip}`;
+        soundWrong();
+      }
+    }
+
+    // --- ACTIVITY 2: SENTENCE BUILDER (SATZBAU) ---
+    const satzbauData = [
+      { scrambled: ["Ege.", "heißt", "Mein", "Freund", "bester"], correct: ["Mein", "bester", "Freund", "heißt", "Ege."], tr: "En iyi erkek arkadaşımın adı Ege." },
+      { scrambled: ["Ezgi.", "Freundin", "Meine", "beste", "heißt"], correct: ["Meine", "beste", "Freundin", "heißt", "Ezgi."], tr: "En iyi kız arkadaşımın adı Ezgi." },
+      { scrambled: ["Augen", "Er", "braune", "hat", "Haare.", "und", "kurze"], correct: ["Er", "hat", "braune", "Augen", "und", "kurze", "Haare."], tr: "Onun kahverengi gözleri ve kısa saçları var." },
+      { scrambled: ["sportlich.", "ist", "und", "Sie", "nett"], correct: ["Sie", "ist", "nett", "und", "sportlich."], alt: ["Sie", "ist", "sportlich", "und", "nett."], tr: "O kibar ve sportiftir." }
+    ];
+
+    let currentSatzbauState = [];
+    function renderSentenceBuilder() {
+      const cont = document.getElementById('sentence-builder-container');
+      cont.innerHTML = '';
+      currentSatzbauState = satzbauData.map(d => ({ current: [] }));
+
+      satzbauData.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'exercise-item';
+        div.id = `sb-item-${idx}`;
+
+        let chipsHtml = item.scrambled.map((w, wIdx) => `
+          <button class="word-chip" id="chip-${idx}-${wIdx}" onclick="addWordToSentence(${idx}, ${wIdx}, '${w}')">${w}</button>
+        `).join('');
+
+        div.innerHTML = `
+          <div class="exercise-q">
+            <span>Hedef Cümle: "${item.tr}"</span>
+            <button class="btn-action btn-secondary" onclick="speak('${item.correct.join(' ')}')">🔊 Dinle</button>
+          </div>
+          <div class="sentence-target" id="sb-target-${idx}">
+            <span style="color: #a0aec0; font-size: 13px;">(Kelimelere tıklayarak buraya dizin)</span>
+          </div>
+          <div class="word-pool">${chipsHtml}</div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn-action" onclick="checkSentenceBuilder(${idx})">Cümleyi Doğrula</button>
+            <button class="btn-action btn-secondary" onclick="resetSentenceBuilder(${idx})">Sıfırla</button>
+          </div>
+          <div id="sb-fb-${idx}" class="feedback-msg"></div>
+        `;
+        cont.appendChild(div);
+      });
+    }
+
+    function addWordToSentence(qIdx, chipIdx, word) {
+      const chip = document.getElementById(`chip-${qIdx}-${chipIdx}`);
+      chip.classList.add('used');
+      currentSatzbauState[qIdx].current.push({ word, chipIdx });
+      renderSentenceTarget(qIdx);
+    }
+
+    function renderSentenceTarget(qIdx) {
+      const target = document.getElementById(`sb-target-${qIdx}`);
+      target.innerHTML = '';
+      let words = currentSatzbauState[qIdx].current;
+      if (words.length === 0) {
+        target.innerHTML = '<span style="color: #a0aec0; font-size: 13px;">(Kelimelere tıklayarak buraya dizin)</span>';
+        return;
+      }
+      words.forEach((item, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'word-chip';
+        btn.style.borderColor = 'var(--primary)';
+        btn.innerText = item.word + " ✕";
+        btn.onclick = () => removeWordFromSentence(qIdx, i);
+        target.appendChild(btn);
+      });
+    }
+
+    function removeWordFromSentence(qIdx, wordIndexInTarget) {
+      let removed = currentSatzbauState[qIdx].current.splice(wordIndexInTarget, 1)[0];
+      document.getElementById(`chip-${qIdx}-${removed.chipIdx}`).classList.remove('used');
+      renderSentenceTarget(qIdx);
+    }
+
+    function resetSentenceBuilder(qIdx) {
+      currentSatzbauState[qIdx].current = [];
+      document.querySelectorAll(`[id^="chip-${qIdx}-"]`).forEach(c => c.classList.remove('used'));
+      renderSentenceTarget(qIdx);
+      document.getElementById(`sb-fb-${qIdx}`).className = 'feedback-msg';
+    }
+
+    function checkSentenceBuilder(qIdx) {
+      const state = currentSatzbauState[qIdx].current;
+      const expected = satzbauData[qIdx].correct;
+      const alt = satzbauData[qIdx].alt;
+      const fb = document.getElementById(`sb-fb-${qIdx}`);
+
+      let built = state.map(s => s.word).join(' ');
+      let isCorrect = (built === expected.join(' ')) || (alt && built === alt.join(' '));
+
+      if (isCorrect) {
+        fb.className = 'feedback-msg correct';
+        fb.innerHTML = `✅ Harika! Doğru cümle: "<strong>${built}</strong>"`;
+        soundCorrect();
+        speak(built);
+      } else {
+        fb.className = 'feedback-msg wrong';
+        fb.innerHTML = `❌ Henüz tam olmadı. Doğru sıralamayı bulmaya çalışın!`;
+        soundWrong();
+      }
+    }
+
+    // --- ACTIVITY 3: SCRAMBLED WORDS (BUCHSTABENSALAT) ---
+    const scrambleData = [
+      { scrambled: "s-p-o-r-t-l-i-c-h", answer: "sportlich", tr: "Sportif" },
+      { scrambled: "h-i-l-f-s-b-e-r-e-i-t", answer: "hilfsbereit", tr: "Yardımsever" },
+      { scrambled: "e-h-r-l-i-c-h", answer: "ehrlich", tr: "Dürüst" },
+      { scrambled: "h-a-a-r-e", answer: "haare", tr: "Saçlar" },
+      { scrambled: "a-u-g-e-n", answer: "augen", tr: "Gözler" }
+    ];
+
+    function renderScramble() {
+      const cont = document.getElementById('scramble-container');
+      cont.innerHTML = '';
+      scrambleData.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'exercise-item';
+        div.innerHTML = `
+          <div class="exercise-q">Kelime ${idx + 1}: ${item.scrambled} (Anlamı: ${item.tr})</div>
+          <div style="display: flex; gap: 8px; align-items: center; margin-top: 8px;">
+            <input type="text" id="scramble-input-${idx}" class="exercise-input" style="max-width: 200px;" placeholder="Kelimeyi yazınız...">
+            <button class="btn-action" onclick="checkScramble(${idx})">Kontrol Et</button>
+            <button class="btn-speak" onclick="speak('${item.answer}')">🔊</button>
+          </div>
+          <div id="scramble-fb-${idx}" class="feedback-msg"></div>
+        `;
+        cont.appendChild(div);
+      });
+    }
+
+    function checkScramble(idx) {
+      const input = document.getElementById(`scramble-input-${idx}`);
+      const fb = document.getElementById(`scramble-fb-${idx}`);
+      const item = scrambleData[idx];
+      let val = input.value.trim().toLowerCase();
+
+      if (val === item.answer.toLowerCase()) {
+        fb.className = 'feedback-msg correct';
+        fb.innerHTML = `✅ Doğru! <strong>${item.answer}</strong> (${item.tr})`;
+        soundCorrect();
+      } else {
+        fb.className = 'feedback-msg wrong';
+        fb.innerHTML = `❌ Yanlış. Tekrar deneyin! (Harfleri kontrol edin)`;
+        soundWrong();
+      }
+    }
+
+    // --- INSERT SPECIAL GERMAN CHARACTERS ---
+    let lastFocusedInput = null;
+    document.addEventListener('focusin', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        lastFocusedInput = e.target;
+      }
+    });
+
+    function insertChar(ch) {
+      if (!lastFocusedInput) {
+        lastFocusedInput = document.querySelector('input[type="text"]:focus') || document.querySelector('input[type="text"]');
+      }
+      if (lastFocusedInput) {
+        let start = lastFocusedInput.selectionStart || lastFocusedInput.value.length;
+        let end = lastFocusedInput.selectionEnd || lastFocusedInput.value.length;
+        let val = lastFocusedInput.value;
+        lastFocusedInput.value = val.substring(0, start) + ch + val.substring(end);
+        lastFocusedInput.focus();
+        lastFocusedInput.selectionStart = lastFocusedInput.selectionEnd = start + ch.length;
+      }
+    }
+
+    // ==========================================================
+    // 3 FARKLI YAZILI SINAVI (SAF ALMANCA SEÇENEKLER, TÜRKÇE ANLAMSORU YOK)
+    // ==========================================================
+    const examsDatabase = [
+      // --------------------------------------------------------
+      // EXAM 1: Temel Konular & Arkadaş Tanıtma (MEB Senaryo 1)
+      // --------------------------------------------------------
+      {
+        id: 0,
+        title: "1. Yazılı Denemesi: Temel Konular & Arkadaş Tanıtma (Senaryo 1)",
+        desc: "Bu sınavda Mein bester Freund / Meine beste Freundin, W-Fragen, sein vs haben fiilleri ve temel sıfatlar test edilmektedir.",
+        sec1: {
+          title: "BÖLÜM 1: W-Sorularını Doğru Cevaplarla Eşleştiriniz (4 x 5 = 20 Puan)",
+          pointsPerQ: 5,
+          items: [
+            {
+              q: "1. Wer ist dein bester Freund?",
+              options: { a: "Er ist 13 Jahre alt.", b: "Mein bester Freund heißt Ege.", c: "Er wohnt in Berlin." },
+              correct: "b",
+              explanation: "'Wer' (Kim) sorusuna kişi adı ile cevap verilir: 'Mein bester Freund heißt Ege.'"
+            },
+            {
+              q: "2. Wie alt ist Ezgi?",
+              options: { a: "Sie ist 13 Jahre alt.", b: "Sie ist nett und sportlich.", c: "Meine beste Freundin heißt Ezgi." },
+              correct: "a",
+              explanation: "'Wie alt' yaş sorusudur: 'Sie ist 13 Jahre alt.'"
+            },
+            {
+              q: "3. Wo wohnt Ege?",
+              options: { a: "Er hat braune Augen.", b: "Er ist schlank.", c: "Er wohnt in Ankara." },
+              correct: "c",
+              explanation: "'Wo' nerede sorusudur: 'Er wohnt in Ankara.'"
+            },
+            {
+              q: "4. Wie ist deine beste Freundin?",
+              options: { a: "Sie heißt Ezgi.", b: "Sie ist nett, ehrlich und hilfsbereit.", c: "Sie kommt aus der Türkei." },
+              correct: "b",
+              explanation: "'Wie ist er/sie?' karakter ve durum sorusudur: 'Sie ist nett, ehrlich und hilfsbereit.'"
+            }
+          ]
+        },
+        sec2: {
+          title: "BÖLÜM 2: Boşlukları 'ist' veya 'hat' ile Doldurunuz (5 x 4 = 20 Puan)",
+          pointsPerQ: 4,
+          items: [
+            { sent: "Ege ______ 13 Jahre alt.", correct: "ist", explanation: "Yaş belirtilirken 'sein' (ist) fiili kullanılır." },
+            { sent: "Ezgi ______ lange, braune Haare.", correct: "hat", explanation: "Saç rengi ve uzunluğu için 'haben' (hat) fiili kullanılır." },
+            { sent: "Mein bester Freund ______ sehr sportlich.", correct: "ist", explanation: "Sportif olmak bir sıfattır, 'sein' (ist) kullanılır." },
+            { sent: "Sie ______ blaue Augen.", correct: "hat", explanation: "Göz rengi bir sahipliktir, 'haben' (hat) kullanılır." },
+            { sent: "Er ______ eine Brille.", correct: "hat", explanation: "Gözlük sahibi olmak 'haben' (hat) fiili ile ifade edilir." }
+          ]
+        },
+        sec3: {
+          title: "BÖLÜM 3: Kelimeleri Sınıflandırınız (Aussehen mi yoksa Charaktereigenschaft mi?) (5 x 4 = 20 Puan)",
+          pointsPerQ: 4,
+          items: [
+            { word: "blonde Haare", correct: "aussehen", explanation: "Sarı saç fiziksel bir dış görünüş (Aussehen) özelliğidir." },
+            { word: "hilfsbereit", correct: "charakter", explanation: "Yardımsever olmak bir karakter özelliğidir (Charaktereigenschaft)." },
+            { word: "groß und schlank", correct: "aussehen", explanation: "Boy ve beden fiziksel dış görünüştür (Aussehen)." },
+            { word: "ehrlich", correct: "charakter", explanation: "Dürüstlük bir karakter özelliğidir (Charaktereigenschaft)." },
+            { word: "braune Augen", correct: "aussehen", explanation: "Kahverengi gözler dış görünüş (Aussehen) özelliğidir." }
+          ]
+        },
+        sec4: {
+          title: "BÖLÜM 4: Çoktan Seçmeli Test Soruları (4 x 5 = 20 Puan)",
+          pointsPerQ: 5,
+          items: [
+            {
+              q: "1. Aşağıdakilerden hangisi bir 'Das Aussehen' özelliğidir?",
+              opts: ["hilfsbereit", "lange Haare", "ehrlich", "freundlich"],
+              correct: 1,
+              explanation: "'lange Haare' (uzun saçlar) dış görünüştür; diğerleri karakter sıfatlarıdır."
+            },
+            {
+              q: "2. 'En iyi erkek arkadaşımın adı Ege' cümlesinin Almanca doğru karşılığı hangisidir?",
+              opts: [
+                "Meine beste Freundin heißt Ege.",
+                "Mein bester Freund heißt Ege.",
+                "Er hat einen besten Freund.",
+                "Wer ist dein bester Freund?"
+              ],
+              correct: 1,
+              explanation: "Erkek arkadaş eril olduğu için 'Mein bester Freund heißt Ege' kalıbı doğrudur."
+            },
+            {
+              q: "3. 'Er hat braune Augen und lange Haare' cümlesinde neden 'hat' fiili kullanılmıştır?",
+              opts: [
+                "Çünkü boy ve kilo ifade ediliyor.",
+                "Çünkü sahip olunan fiziksel özellikler (saç, göz) haben fiiliyle anlatılır.",
+                "Çünkü isim sorma cümlesidir.",
+                "Çünkü karakter özelliği anlatılıyor."
+              ],
+              correct: 1,
+              explanation: "Göz ve saç gibi fiziksel uzuvlar 'haben' (hat) fiili ile ifade edilir."
+            },
+            {
+              q: "4. 'Ist dein Freund sportlich?' sorusuna olumsuz (verneinen) doğru cevap hangisidir?",
+              opts: [
+                "Ja, er ist sportlich.",
+                "Nein, er ist nicht sportlich.",
+                "Er heißt nicht Ege.",
+                "Nein, er hat keine Haare."
+              ],
+              correct: 1,
+              explanation: "Sıfatları olumsuz yaparken 'nicht' kullanılır: 'Nein, er ist nicht sportlich.'"
+            }
+          ]
+        },
+        sec5: {
+          title: "BÖLÜM 5: Soruları 'nicht' ile Olumsuz Yanıtlayınız (2 x 10 = 20 Puan)",
+          pointsPerQ: 10,
+          items: [
+            {
+              q: "1. Ist Ezgi faul? (Verneine mit 'nicht')",
+              correctText: "Nein, sie ist nicht faul.",
+              checkFn: (val) => val.includes("nicht") && val.includes("faul") && (val.includes("sie") || val.includes("nein")),
+              explanation: "Doğru yanıt: 'Nein, sie ist nicht faul.' (Sıfatların önüne 'nicht' gelir)."
+            },
+            {
+              q: "2. Ist Ege unhöflich? (Verneine mit 'nicht')",
+              correctText: "Nein, er ist nicht unhöflich.",
+              checkFn: (val) => val.includes("nicht") && val.includes("unhöflich") && (val.includes("er") || val.includes("nein")),
+              explanation: "Doğru yanıt: 'Nein, er ist nicht unhöflich.'"
+            }
+          ]
+        }
+      },
+
+      // --------------------------------------------------------
+      // EXAM 2: Dış Görünüş & Karakter Sıfatları (MEB Senaryo 2)
+      // --------------------------------------------------------
+      {
+        id: 1,
+        title: "2. Yazılı Denemesi: Dış Görünüş & Karakter Sıfatları (Senaryo 2)",
+        desc: "Bu sınavda sıfatların zıt anlamları, fiziksel tanımlar (kurz/lang, groß/klein), haben vs sein ayrımı ve doğru cümle yapıları test edilmektedir.",
+        sec1: {
+          title: "BÖLÜM 1: Zıt Anlamlı Sıfatları Eşleştiriniz (4 x 5 = 20 Puan)",
+          pointsPerQ: 5,
+          items: [
+            {
+              q: "1. Welches Wort ist das Gegenteil von „fleißig“?",
+              options: { a: "faul", b: "groß", c: "ehrlich" },
+              correct: "a",
+              explanation: "'fleißig' (çalışkan) sıfatının zıt anlamlısı 'faul' (tembel) kelimesidir."
+            },
+            {
+              q: "2. Welches Wort ist das Gegenteil von „lange Haare“?",
+              options: { a: "blonde Haare", b: "kurze Haare", c: "braune Augen" },
+              correct: "b",
+              explanation: "'lange Haare' zıddı 'kurze Haare'dir."
+            },
+            {
+              q: "3. Welches Wort ist das Gegenteil von „groß“?",
+              options: { a: "klein", b: "nett", c: "schlank" },
+              correct: "a",
+              explanation: "'groß' zıddı 'klein'dir."
+            },
+            {
+              q: "4. Welches Wort ist das Gegenteil von „sympathisch“?",
+              options: { a: "sportlich", b: "unsympathisch", c: "klug" },
+              correct: "b",
+              explanation: "'sympathisch' kelimesinin zıddı 'unsympathisch'tir."
+            }
+          ]
+        },
+        sec2: {
+          title: "BÖLÜM 2: Boşlukları Uygun Fiille Doldurunuz (ist / hat / wohnt) (5 x 4 = 20 Puan)",
+          pointsPerQ: 4,
+          items: [
+            { sent: "Ezgi ______ mittelgroß und schlank.", correct: "ist", explanation: "Boy ve beden ölçüleri için 'ist' (sein) kullanılır." },
+            { sent: "Ege ______ kurze, schwarze Haare.", correct: "hat", explanation: "Saç tipi ve rengi için 'hat' (haben) kullanılır." },
+            { sent: "Meine beste Freundin ______ in Berlin.", correct: "wohnt", explanation: "Bir şehirde ikamet etmek için 'wohnen' (wohnt) fiili kullanılır." },
+            { sent: "Er ______ sehr freundlich und hilfsbereit.", correct: "ist", explanation: "Karakter özellikleri için 'ist' (sein) kullanılır." },
+            { sent: "Ezgi ______ grüne Augen.", correct: "hat", explanation: "Göz rengi sahipliği için 'hat' (haben) kullanılır." }
+          ]
+        },
+        sec3: {
+          title: "BÖLÜM 3: Doğru mu Yanlış mı? (Richtig veya Falsch) (5 x 4 = 20 Puan)",
+          pointsPerQ: 4,
+          items: [
+            { word: "„Sie hat blonde Haare“ — Das beschreibt die Haarfarbe.", correct: "richtig", explanation: "Doğru. 'blonde Haare' sarı saç demektir." },
+            { word: "„Er ist braune Augen“ — Das ist grammatisch richtig.", correct: "falsch", explanation: "Yanlış! Gözlerden bahsederken 'ist' değil, 'hat' kullanılmalıdır." },
+            { word: "„nett“ und „hilfsbereit“ sind Wörter für das Aussehen.", correct: "falsch", explanation: "Yanlış! 'nett' ve 'hilfsbereit' karakter özellikleridir." },
+            { word: "„Wer ist deine beste Freundin?“ fragt nach einer Person.", correct: "richtig", explanation: "Doğru. 'Freundin' dişil (kız) arkadaştır." },
+            { word: "„Er ist sportlich und lustig“ beschreibt den Charakter.", correct: "richtig", explanation: "Doğru. Sportif ve neşeli olmak kişilik özellikleridir." }
+          ]
+        },
+        sec4: {
+          title: "BÖLÜM 4: Çoktan Seçmeli Sorular (4 x 5 = 20 Puan)",
+          pointsPerQ: 5,
+          items: [
+            {
+              q: "1. 'Onun kahverengi gözleri ve uzun saçları var' cümlesi hangisidir?",
+              opts: [
+                "Er ist braune Augen und lange Haare.",
+                "Sie hat braune Augen und lange Haare.",
+                "Sie wohnt in braunen Augen.",
+                "Sie heißt braune Augen."
+              ],
+              correct: 1,
+              explanation: "'Sie hat braune Augen und lange Haare' doğru kalıptır."
+            },
+            {
+              q: "2. Kız arkadaş tanıtılırken cümlenin başında hangisi kullanılır?",
+              opts: [
+                "Mein bester Freund...",
+                "Meine beste Freundin...",
+                "Er ist mein bester Freund...",
+                "Wer ist dein bester Freund?"
+              ],
+              correct: 1,
+              explanation: "Kız arkadaş için 'die Freundin' -> 'Meine beste Freundin' denir."
+            },
+            {
+              q: "3. Aşağıdaki kelimelerden hangisi 'akıllı / zeki' anlamına gelir?",
+              opts: ["faul", "klug", "ruhig", "kurz"],
+              correct: 1,
+              explanation: "'klug' akıllı, zeki demektir (faul = tembel, ruhig = sakin, kurz = kısa)."
+            },
+            {
+              q: "4. 'Wie alt ist dein bester Freund?' sorusuna mantıklı cevap hangisidir?",
+              opts: [
+                "Er heißt Ege.",
+                "Er ist 13 Jahre alt.",
+                "Er wohnt in Ankara.",
+                "Er hat blaue Augen."
+              ],
+              correct: 1,
+              explanation: "'Wie alt' yaş sorusudur: 'Er ist 13 Jahre alt.'"
+            }
+          ]
+        },
+        sec5: {
+          title: "BÖLÜM 5: Karışık Kelimelerle Doğru Cümle Yazınız (2 x 10 = 20 Puan)",
+          pointsPerQ: 10,
+          items: [
+            {
+              q: "1. [hat / Sie / Haare / lange / blonde]",
+              correctText: "Sie hat lange blonde Haare.",
+              checkFn: (val) => val.includes("sie") && val.includes("hat") && val.includes("haare") && (val.includes("lange") || val.includes("blonde")),
+              explanation: "Doğru Cümle: 'Sie hat lange blonde Haare.'"
+            },
+            {
+              q: "2. [ist / Er / ehrlich / und / hilfsbereit]",
+              correctText: "Er ist ehrlich und hilfsbereit.",
+              checkFn: (val) => val.includes("er") && val.includes("ist") && val.includes("ehrlich") && val.includes("hilfsbereit"),
+              explanation: "Doğru Cümle: 'Er ist ehrlich und hilfsbereit.'"
+            }
+          ]
+        }
+      },
+
+      // --------------------------------------------------------
+      // EXAM 3: Okuma Parçası & Beceri Temelli Sorular (MEB Senaryo 3)
+      // --------------------------------------------------------
+      {
+        id: 2,
+        title: "3. Yazılı Denemesi: Okuma Parçası & Beceri Temelli Sorular (Senaryo 3)",
+        desc: "Bu sınavda Ege ve Ezgi hakkındaki okuma parçasını anlama, hatalı fiilleri bulup düzeltme ve W-Fragen tamamlama becerileri ölçülmektedir.",
+        sec1: {
+          title: "BÖLÜM 1: Okuma Parçasına Göre Soruları Cevaplayınız (4 x 5 = 20 Puan)",
+          pointsPerQ: 5,
+          readingPassage: "„Hallo! Ich bin Deniz. Mein bester Freund heißt Ege. Er ist 13 Jahre alt und wohnt in Ankara. Ege ist groß und sportlich. Er hat kurze schwarze Haare und braune Augen. Er ist sehr hilfsbereit und ehrlich.“",
+          items: [
+            {
+              q: "1. Wie heißt Deniz' bester Freund?",
+              options: { a: "Ezgi", b: "Ege", c: "Ahmet" },
+              correct: "b",
+              explanation: "Metne göre: 'Mein bester Freund heißt Ege.'"
+            },
+            {
+              q: "2. Wie alt ist Ege?",
+              options: { a: "12 Jahre alt", b: "13 Jahre alt", c: "14 Jahre alt" },
+              correct: "b",
+              explanation: "Metne göre: 'Er ist 13 Jahre alt.'"
+            },
+            {
+              q: "3. Wo wohnt Ege?",
+              options: { a: "In Berlin", b: "In Ankara", c: "In Istanbul" },
+              correct: "b",
+              explanation: "Metne göre: 'Er wohnt in Ankara.'"
+            },
+            {
+              q: "4. Welche Augenfarbe hat Ege?",
+              options: { a: "Blaue Augen", b: "Grüne Augen", c: "Braune Augen" },
+              correct: "c",
+              explanation: "Metne göre: 'Er hat kurze schwarze Haare und braune Augen.'"
+            }
+          ]
+        },
+        sec2: {
+          title: "BÖLÜM 2: Cümlelerdeki Hatalı Fiili Bulup Doğrusunu Yazınız (ist / hat) (5 x 4 = 20 Puan)",
+          pointsPerQ: 4,
+          items: [
+            { sent: "Ege ist kurze Haare. (Doğru fiil ne olmalı?)", correct: "hat", explanation: "Saç için 'ist' değil, 'hat' (haben) fiili yazılmalıdır." },
+            { sent: "Ezgi hat sehr nett. (Doğru fiil ne olmalı?)", correct: "ist", explanation: "Karakter sıfatı için 'hat' değil, 'ist' (sein) yazılmalıdır." },
+            { sent: "Er hat 13 Jahre alt. (Doğru fiil ne olmalı?)", correct: "ist", explanation: "Yaş belirtirken 'sein' (ist) fiili kullanılır." },
+            { sent: "Sie ist grüne Augen. (Doğru fiil ne olmalı?)", correct: "hat", explanation: "Göz rengi sahipliktir, 'hat' yazılmalıdır." },
+            { sent: "Mein bester Freund hat groß. (Doğru fiil ne olmalı?)", correct: "ist", explanation: "Boy sıfatı için 'ist' (sein) fiili yazılmalıdır." }
+          ]
+        },
+        sec3: {
+          title: "BÖLÜM 3: Eksik W-Soru Kelimelerini Tamamlayınız (Wer / Wie / Wo / Wie alt) (4 x 5 = 20 Puan)",
+          pointsPerQ: 5,
+          items: [
+            { sent: "______ ist dein bester Freund? — Mein bester Freund ist Ege.", correct: "wer", explanation: "Kişiyi sorarken 'Wer' (Kim) kullanılır." },
+            { sent: "______ heißt deine beste Freundin? — Sie heißt Ezgi.", correct: "wie", explanation: "İsim sorarken 'Wie heißt...?' kalıbı kullanılır." },
+            { sent: "______ wohnt Ege? — Er wohnt in Ankara.", correct: "wo", explanation: "Yer / şehir sorarken 'Wo' (Nerede) kullanılır." },
+            { sent: "______ ist Ezgi? — Sie ist 13 Jahre alt.", correct: "wie alt", explanation: "Yaş sorarken 'Wie alt' (Kaç yaşında) kullanılır." }
+          ]
+        },
+        sec4: {
+          title: "BÖLÜM 4: Çoktan Seçmeli Test Soruları (4 x 5 = 20 Puan)",
+          pointsPerQ: 5,
+          items: [
+            {
+              q: "1. „Er/Sie ist nett und sportlich“ cümlesi ne tür bir açıklamadır?",
+              opts: ["Das Aussehen", "Die Charaktereigenschaft", "Die Adresse", "Die Schule"],
+              correct: 1,
+              explanation: "'nett' ve 'sportlich' kişisel karakter özellikleridir."
+            },
+            {
+              q: "2. „Nein, sie hat keine kurzen Haare, sie hat ______ Haare.“ boşluğa ne gelmelidir?",
+              opts: ["lange", "faul", "klug", "ehrlich"],
+              correct: 0,
+              explanation: "'kurz' (kısa) zıddı 'lang' (uzun) dur; dolayısıyla 'lange Haare' gelmelidir."
+            },
+            {
+              q: "3. Aşağıdaki ikililerden hangisi 'Dış Görünüş + Karakter' sırasıyla verilmiştir?",
+              opts: ["hilfsbereit - ehrlich", "groß - nett", "faul - sportlich", "schwarz - braun"],
+              correct: 1,
+              explanation: "'groß' (uzun - dış görünüş), 'nett' (kibar - karakter) dir."
+            },
+            {
+              q: "4. „Wer ist deine beste Freundin?“ sorusunda neden 'deine' ve 'Freundin' kullanılmıştır?",
+              opts: [
+                "Çünkü sorulan kişi erkektir.",
+                "Çünkü sorulan kişi kızdır (dişil artikelli olduğu için).",
+                "Çünkü çoğul bir kelimedir.",
+                "Çünkü fiil haben fiilidir."
+              ],
+              correct: 1,
+              explanation: "Almancada 'die Freundin' dişil olduğu için 'deine beste Freundin' denir."
+            }
+          ]
+        },
+        sec5: {
+          title: "BÖLÜM 5: Kısa Yanıtlı Yazılı Soruları (2 x 10 = 20 Puan)",
+          pointsPerQ: 10,
+          items: [
+            {
+              q: "1. „Wer ist deine beste Freundin?“ sorusuna Ezgi'yi tanıtarak tam cümleyle cevap veriniz.",
+              correctText: "Meine beste Freundin heißt Ezgi.",
+              checkFn: (val) => val.includes("meine") && val.includes("freundin") && val.includes("ezgi"),
+              explanation: "Doğru yanıt: 'Meine beste Freundin heißt Ezgi.'"
+            },
+            {
+              q: "2. „Ist Ege faul?“ sorusunu 'Nein' ve 'sportlich' kullanarak cevaplayınız.",
+              correctText: "Nein, er ist sportlich.",
+              checkFn: (val) => val.includes("nein") && val.includes("sportlich") && val.includes("er"),
+              explanation: "Doğru yanıt: 'Nein, er ist sportlich.' veya 'Nein, er ist nicht faul, er ist sportlich.'"
+            }
+          ]
+        }
+      }
+    ];
+
+    let currentExamIndex = 0;
+
+    function switchExam(examIdx) {
+      currentExamIndex = examIdx;
+      document.querySelectorAll('.exam-nav-btn').forEach((btn, i) => {
+        if (i === examIdx) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+      document.getElementById('exam-report-card').style.display = 'none';
+      renderCurrentExam();
+    }
+
+    function nextExam() {
+      let nextIdx = (currentExamIndex + 1) % examsDatabase.length;
+      switchExam(nextIdx);
+      window.scrollTo({ top: document.getElementById('tab-sinav').offsetTop - 60, behavior: 'smooth' });
+    }
+
+    function renderCurrentExam() {
+      const exam = examsDatabase[currentExamIndex];
+      document.getElementById('exam-desc-banner').innerHTML = `
+        <strong>${exam.title}</strong><br>
+        <span style="color:#555;">${exam.desc}</span>
+      `;
+
+      const container = document.getElementById('active-exam-container');
+      container.innerHTML = '';
+
+      // Section 1
+      let s1Html = `<div class="exam-section-title">${exam.sec1.title}</div>`;
+      if (exam.sec1.readingPassage) {
+        s1Html += `
+          <div style="background: #fffbeb; border: 1px solid #fde68a; padding: 12px 16px; border-radius: 10px; margin-bottom: 14px; font-size: 14.5px; font-weight: 500;">
+            📖 <strong>Okuma Metni:</strong> ${exam.sec1.readingPassage}
+            <button class="btn-speak" style="vertical-align: middle; margin-left: 8px;" onclick="speak('${exam.sec1.readingPassage.replace(/["„]/g, '')}')">🔊 Metni Dinle</button>
+          </div>
+        `;
+      }
+      exam.sec1.items.forEach((item, idx) => {
+        let opts = Object.keys(item.options).map(key => `
+          <label style="cursor: pointer;"><input type="radio" name="e-sec1-${idx}" value="${key}"> ${key.toUpperCase()}) ${item.options[key]}</label>
+        `).join(' ');
+        s1Html += `
+          <div class="exam-q-box" id="box-s1-${idx}">
+            <div style="font-weight: 700; font-size: 14px; margin-bottom: 6px;">${item.q}</div>
+            <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 4px;">${opts}</div>
+            <div class="exam-q-feedback" id="fb-s1-${idx}"></div>
+          </div>
+        `;
+      });
+
+      // Section 2
+      let s2Html = `<div class="exam-section-title">${exam.sec2.title}</div>`;
+      exam.sec2.items.forEach((item, idx) => {
+        let sentWithInput = item.sent.replace('______', `<input type="text" id="e-sec2-${idx}" class="exercise-input" style="width: 85px; display: inline-block; padding: 4px 8px; font-weight: bold;" placeholder="...">`);
+        if (!item.sent.includes('______')) {
+          sentWithInput = item.sent + ` <input type="text" id="e-sec2-${idx}" class="exercise-input" style="width: 85px; display: inline-block; padding: 4px 8px; font-weight: bold;" placeholder="...">`;
+        }
+        s2Html += `
+          <div class="exam-q-box" id="box-s2-${idx}">
+            <div style="font-weight: 600; font-size: 14px; margin-bottom: 4px;">${idx + 1}. ${sentWithInput}</div>
+            <div class="exam-q-feedback" id="fb-s2-${idx}"></div>
+          </div>
+        `;
+      });
+
+      // Section 3
+      let s3Html = `<div class="exam-section-title">${exam.sec3.title}</div>`;
+      exam.sec3.items.forEach((item, idx) => {
+        let selectOrInput = '';
+        if (exam.id === 0) {
+          selectOrInput = `
+            <select id="e-sec3-${idx}" style="padding: 4px 8px; border-radius: 6px; font-size: 13px;">
+              <option value="">Seçiniz...</option>
+              <option value="aussehen">Das Aussehen</option>
+              <option value="charakter">Die Charaktereigenschaft</option>
+            </select>
+          `;
+        } else if (exam.id === 1) {
+          selectOrInput = `
+            <select id="e-sec3-${idx}" style="padding: 4px 8px; border-radius: 6px; font-size: 13px;">
+              <option value="">Seçiniz...</option>
+              <option value="richtig">Richtig</option>
+              <option value="falsch">Falsch</option>
+            </select>
+          `;
+        } else {
+          selectOrInput = `<input type="text" id="e-sec3-${idx}" class="exercise-input" style="width: 100px; display: inline-block; padding: 4px 8px; font-weight: bold;" placeholder="Wer/Wie...">`;
+        }
+
+        s3Html += `
+          <div class="exam-q-box" id="box-s3-${idx}">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <span style="font-weight: 600; font-size: 14px;">${idx + 1}. ${item.word || item.sent}</span>
+              ${selectOrInput}
+            </div>
+            <div class="exam-q-feedback" id="fb-s3-${idx}"></div>
+          </div>
+        `;
+      });
+
+      // Section 4
+      let s4Html = `<div class="exam-section-title">${exam.sec4.title}</div>`;
+      exam.sec4.items.forEach((item, qIdx) => {
+        let opts = item.opts.map((opt, optIdx) => `
+          <label style="cursor: pointer; display: block; margin: 3px 0;">
+            <input type="radio" name="e-sec4-${qIdx}" value="${optIdx}"> ${String.fromCharCode(65 + optIdx)}) ${opt}
+          </label>
+        `).join('');
+        s4Html += `
+          <div class="exam-q-box" id="box-s4-${qIdx}">
+            <div style="font-weight: 700; font-size: 14px; margin-bottom: 6px;">${item.q}</div>
+            <div style="margin-bottom: 4px;">${opts}</div>
+            <div class="exam-q-feedback" id="fb-s4-${qIdx}"></div>
+          </div>
+        `;
+      });
+
+      // Section 5
+      let s5Html = `<div class="exam-section-title">${exam.sec5.title}</div>`;
+      exam.sec5.items.forEach((item, idx) => {
+        s5Html += `
+          <div class="exam-q-box" id="box-s5-${idx}">
+            <div style="font-weight: 700; font-size: 14px; margin-bottom: 6px;">${item.q}</div>
+            <div>
+              <input type="text" id="e-sec5-${idx}" class="exercise-input" style="width: 100%; max-width: 480px;" placeholder="Cevabınızı buraya yazınız...">
+            </div>
+            <div class="exam-q-feedback" id="fb-s5-${idx}"></div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = s1Html + s2Html + s3Html + s4Html + s5Html;
+    }
+
+    function submitActiveExam() {
+      const exam = examsDatabase[currentExamIndex];
+      let totalScore = 0;
+      let mistakes = [];
+
+      // SECTION 1 (4 x 5p = 20p)
+      exam.sec1.items.forEach((item, idx) => {
+        const box = document.getElementById(`box-s1-${idx}`);
+        const fb = document.getElementById(`fb-s1-${idx}`);
+        let sel = document.querySelector(`input[name="e-sec1-${idx}"]:checked`);
+        let userVal = sel ? sel.value : null;
+
+        if (userVal === item.correct) {
+          totalScore += exam.sec1.pointsPerQ;
+          box.className = 'exam-q-box q-correct';
+          fb.className = 'exam-q-feedback show-correct';
+          fb.innerHTML = `✅ Doğru! (+${exam.sec1.pointsPerQ} Puan)`;
+        } else {
+          box.className = 'exam-q-box q-wrong';
+          fb.className = 'exam-q-feedback show-wrong';
+          let yourAns = userVal ? userVal.toUpperCase() + ') ' + item.options[userVal] : 'Boş bırakıldı';
+          let correctAns = item.correct.toUpperCase() + ') ' + item.options[item.correct];
+          fb.innerHTML = `❌ Yanlış (0 Puan) | <strong>Sizin Cevabınız:</strong> ${yourAns} <br><strong>Doğru Cevap:</strong> ${correctAns}<br>💡 <em>${item.explanation}</em>`;
+          mistakes.push({
+            sec: "Bölüm 1 (W-Fragen)",
+            q: item.q,
+            userAns: yourAns,
+            correctAns: correctAns,
+            tip: item.explanation
+          });
+        }
+      });
+
+      // SECTION 2 (5 x 4p = 20p)
+      exam.sec2.items.forEach((item, idx) => {
+        const box = document.getElementById(`box-s2-${idx}`);
+        const fb = document.getElementById(`fb-s2-${idx}`);
+        const input = document.getElementById(`e-sec2-${idx}`);
+        let val = input.value.trim().toLowerCase();
+
+        if (val === item.correct.toLowerCase()) {
+          totalScore += exam.sec2.pointsPerQ;
+          box.className = 'exam-q-box q-correct';
+          fb.className = 'exam-q-feedback show-correct';
+          fb.innerHTML = `✅ Doğru! (+${exam.sec2.pointsPerQ} Puan)`;
+        } else {
+          box.className = 'exam-q-box q-wrong';
+          fb.className = 'exam-q-feedback show-wrong';
+          fb.innerHTML = `❌ Yanlış (0 Puan) | <strong>Sizin Cevabınız:</strong> "${val || 'Boş'}" | <strong>Doğru Cevap:</strong> "${item.correct}"<br>💡 <em>${item.explanation}</em>`;
+          mistakes.push({
+            sec: "Bölüm 2 (Fiil Doldurma)",
+            q: item.sent,
+            userAns: val || 'Boş',
+            correctAns: item.correct,
+            tip: item.explanation
+          });
+        }
+      });
+
+      // SECTION 3 (5 x 4p = 20p)
+      exam.sec3.items.forEach((item, idx) => {
+        const box = document.getElementById(`box-s3-${idx}`);
+        const fb = document.getElementById(`fb-s3-${idx}`);
+        const input = document.getElementById(`e-sec3-${idx}`);
+        let val = input.value.trim().toLowerCase();
+
+        let isCorrect = (val === item.correct.toLowerCase());
+        if (isCorrect) {
+          totalScore += exam.sec3.pointsPerQ;
+          box.className = 'exam-q-box q-correct';
+          fb.className = 'exam-q-feedback show-correct';
+          fb.innerHTML = `✅ Doğru! (+${exam.sec3.pointsPerQ} Puan)`;
+        } else {
+          box.className = 'exam-q-box q-wrong';
+          fb.className = 'exam-q-feedback show-wrong';
+          fb.innerHTML = `❌ Yanlış (0 Puan) | <strong>Sizin Cevabınız:</strong> "${val || 'Boş'}" | <strong>Doğru Cevap:</strong> "${item.correct}"<br>💡 <em>${item.explanation}</em>`;
+          mistakes.push({
+            sec: "Bölüm 3 (Sınıflandırma/Soru)",
+            q: item.word || item.sent,
+            userAns: val || 'Boş',
+            correctAns: item.correct,
+            tip: item.explanation
+          });
+        }
+      });
+
+      // SECTION 4 (4 x 5p = 20p)
+      exam.sec4.items.forEach((item, qIdx) => {
+        const box = document.getElementById(`box-s4-${qIdx}`);
+        const fb = document.getElementById(`fb-s4-${qIdx}`);
+        let sel = document.querySelector(`input[name="e-sec4-${qIdx}"]:checked`);
+        let userOptIdx = sel ? parseInt(sel.value) : null;
+
+        if (userOptIdx === item.correct) {
+          totalScore += exam.sec4.pointsPerQ;
+          box.className = 'exam-q-box q-correct';
+          fb.className = 'exam-q-feedback show-correct';
+          fb.innerHTML = `✅ Doğru! (+${exam.sec4.pointsPerQ} Puan)`;
+        } else {
+          box.className = 'exam-q-box q-wrong';
+          fb.className = 'exam-q-feedback show-wrong';
+          let yourAns = (userOptIdx !== null) ? String.fromCharCode(65 + userOptIdx) + ') ' + item.opts[userOptIdx] : 'Boş bırakıldı';
+          let correctAns = String.fromCharCode(65 + item.correct) + ') ' + item.opts[item.correct];
+          fb.innerHTML = `❌ Yanlış (0 Puan) | <strong>Sizin Cevabınız:</strong> ${yourAns} <br><strong>Doğru Cevap:</strong> ${correctAns}<br>💡 <em>${item.explanation}</em>`;
+          mistakes.push({
+            sec: "Bölüm 4 (Çoktan Seçmeli)",
+            q: item.q,
+            userAns: yourAns,
+            correctAns: correctAns,
+            tip: item.explanation
+          });
+        }
+      });
+
+      // SECTION 5 (2 x 10p = 20p)
+      exam.sec5.items.forEach((item, idx) => {
+        const box = document.getElementById(`box-s5-${idx}`);
+        const fb = document.getElementById(`fb-s5-${idx}`);
+        const input = document.getElementById(`e-sec5-${idx}`);
+        let rawVal = input.value;
+        let val = cleanStr(rawVal);
+
+        let isCorrect = item.checkFn(val);
+        if (isCorrect) {
+          totalScore += exam.sec5.pointsPerQ;
+          box.className = 'exam-q-box q-correct';
+          fb.className = 'exam-q-feedback show-correct';
+          fb.innerHTML = `✅ Doğru! (+${exam.sec5.pointsPerQ} Puan)`;
+        } else {
+          box.className = 'exam-q-box q-wrong';
+          fb.className = 'exam-q-feedback show-wrong';
+          fb.innerHTML = `❌ Yanlış (0 Puan) | <strong>Sizin Cevabınız:</strong> "${rawVal || 'Boş'}" <br><strong>Örnek Doğru Cevap:</strong> "${item.correctText}"<br>💡 <em>${item.explanation}</em>`;
+          mistakes.push({
+            sec: "Bölüm 5 (Yazılı Cevap)",
+            q: item.q,
+            userAns: rawVal || 'Boş',
+            correctAns: item.correctText,
+            tip: item.explanation
+          });
+        }
+      });
+
+      // Rapor Kartını Göster
+      const report = document.getElementById('exam-report-card');
+      report.style.display = 'block';
+      document.getElementById('final-score-val').innerText = `${totalScore} / 100`;
+
+      let grade = "1 (Yetersiz)";
+      let comment = "Konuları baştan tekrar edip kelime kartlarına tekrar çalışmanız önerilir.";
+      if (totalScore >= 85) {
+        grade = "5 (Pekiyi 🌟)";
+        comment = "Harika bir başarı! Sınavdaki tüm kazanımları eksiksiz kavramışsınız.";
+        soundCorrect();
+      } else if (totalScore >= 70) {
+        grade = "4 (İyi 👏)";
+        comment = "Tebrikler, gayet iyi bir puan! Ufak eksikler için aşağıdaki hatalı soru çözümlerini inceleyin.";
+        soundCorrect();
+      } else if (totalScore >= 55) {
+        grade = "3 (Orta 👍)";
+        comment = "Geçer not! Özellikle sein/haben ayrımı ve W-Fragen kurallarına dikkat etmelisiniz.";
+      } else if (totalScore >= 45) {
+        grade = "2 (Geçer)";
+        comment = "Biraz daha pratik yapmanız gerekiyor. Aşağıdaki soru çözümlerini dikkatle okuyun.";
+        soundWrong();
+      } else {
+        soundWrong();
+      }
+
+      document.getElementById('final-score-grade').innerText = `MEB Notu: ${grade}`;
+      document.getElementById('final-score-comment').innerText = comment;
+
+      // Hata Listesi Oluştur
+      const mistContainer = document.getElementById('mistake-list-container');
+      if (mistakes.length === 0) {
+        mistContainer.innerHTML = `
+          <div style="color: #166534; font-weight: 700; text-align: center; padding: 10px;">
+            🎉 Kusursuz! Bu sınavda hiç yanlış yapmadınız, tebrikler! 💯
+          </div>
+        `;
+      } else {
+        let mHtml = `<h3 style="color: #991b1b; margin-bottom: 12px; font-size: 16px;">🔍 Yanlış Yapılan Soruların Çözüm Rehberi (${mistakes.length} Hata):</h3>`;
+        mistakes.forEach((m, mIdx) => {
+          mHtml += `
+            <div class="mistake-item">
+              <strong style="color: var(--primary);">${mIdx + 1}. [${m.sec}] ${m.q}</strong><br>
+              <span style="color: #b91c1c;">• Sizin Cevabınız:</span> <strong>${m.userAns}</strong><br>
+              <span style="color: #15803d;">• Doğru Cevap:</span> <strong>${m.correctAns}</strong><br>
+              <span style="color: #4b5563;">💡 <strong>Kural & Açıklama:</strong> ${m.tip}</span>
+            </div>
+          `;
+        });
+        mistContainer.innerHTML = mHtml;
+      }
+
+      report.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetActiveExam() {
+      document.getElementById('exam-report-card').style.display = 'none';
+      renderCurrentExam();
+      window.scrollTo({ top: document.getElementById('tab-sinav').offsetTop - 60, behavior: 'smooth' });
+    }
+
+    // --- INITIALIZE ALL MODULES ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderFlashcards();
+      renderCurrentGuessCard();
+      renderVocabTest();
+      renderSpellingQuiz();
+      renderListeningQuestion();
+      renderVerbFill();
+      renderSentenceBuilder();
+      renderScramble();
+      renderCurrentExam();
+    });
+  </script>
 </body>
 </html>
